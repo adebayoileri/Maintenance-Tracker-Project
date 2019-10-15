@@ -1,0 +1,22 @@
+{
+  "name": "maintenance-tracker-project",
+  "version": "1.0.0",
+  "description": "Maintenance Tracker App is an application that provides users with the ability to reach out to operations or repairs department regarding repair or maintenance requests and monitor the status of their request.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adebayoileri/Maintenance-Tracker-Project.git"
+  },
+  "author": "Adebayo Ilerioluwa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adebayoileri/Maintenance-Tracker-Project/issues"
+  },
+  "homepage": "https://github.com/adebayoileri/Maintenance-Tracker-Project#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
