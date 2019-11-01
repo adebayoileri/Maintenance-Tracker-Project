@@ -1,0 +1,56 @@
+body {
+    font-family: "Montserrat", sans-serif;
+    color: #444;
+}
+
+/* Custom ScrollBar*/
+::-webkit-scrollbar {
+    width: 7px;
+    background: transparent;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    /* background: white; */
+    border-radius: 4px;
+    height: 20px;
+    background: #00c6ff;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #2082e4;
+}
+
+/* #2082e4  #39f*/
+/* font-family: 'Montserrat', sans-serif; 
+/*colors  #39f  #2082e4*/
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 100px;
+    background: #39f;
+    line-height: 50px;
+    color: #fff;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    float: left;
+}
+
+header .menu {
+    display: none;
+    font-size: 30px;
+    color: #fff;
+    float: right;
+}
