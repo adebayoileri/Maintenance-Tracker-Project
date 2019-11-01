@@ -27,6 +27,19 @@ body {
     background: #2082e4;
 }
 
+
+/* general Styles */
+hr{
+    color: #39f;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+i,p,h1,h2,h3,h4,h5,h6{
+    color: white;
+}
+
 /* #2082e4  #39f*/
 /* font-family: 'Montserrat', sans-serif; 
 /*colors  #39f  #2082e4*/
@@ -46,11 +59,4 @@ header .logo {
     font-size: 24px;
     font-weight: bold;
     float: left;
-}
-
-header .menu {
-    display: none;
-    font-size: 30px;
-    color: #fff;
-    float: right;
 }
