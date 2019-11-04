@@ -63,15 +63,14 @@ header .logo {
 }
 
 
-.side-nav {
+.side-nav{
     position: fixed;
-    top: 4.2em;
+    top: 50px;
     left: 0;
     width: 20%;
     height: 100%;
     overflow: auto;
     text-align: center;
-    /*border-right: .05em solid rgb(206, 204, 204);*/
   }
   
   .side-nav::-webkit-scrollbar {
