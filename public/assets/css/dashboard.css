@@ -1,6 +1,7 @@
 body {
     font-family: "Montserrat", sans-serif;
     color: #444;
+    overflow-x: hidden;
 }
 
 /* Custom ScrollBar*/
@@ -58,5 +59,14 @@ header {
 header .logo {
     font-size: 24px;
     font-weight: bold;
-    float: left;
+    text-align: center;
+}
+
+.side-menu{
+    height: 100vh;
+    width: 220px;
+    background-color: #00c6ff;
+    top: 0;
+    box-sizing: border-box;
+    z-index: 1;
 }
