@@ -1,6 +1,6 @@
 body {
     font-family: "Montserrat", sans-serif;
-    color: #444;
+    color: #39f;
     overflow-x: hidden;
 }
 
@@ -38,7 +38,7 @@ a{
     color: white;
 }
 i,p,h1,h2,h3,h4,h5,h6{
-    color: white;
+    color: #39f;
 }
 
 /* #2082e4  #39f*/
@@ -62,11 +62,65 @@ header .logo {
     text-align: center;
 }
 
-.side-menu{
-    height: 100vh;
-    width: 220px;
-    background-color: #00c6ff;
-    top: 0;
-    box-sizing: border-box;
-    z-index: 1;
-}
+
+.side-nav {
+    position: fixed;
+    top: 4.2em;
+    left: 0;
+    width: 20%;
+    height: 100%;
+    overflow: auto;
+    text-align: center;
+    /*border-right: .05em solid rgb(206, 204, 204);*/
+  }
+  
+  .side-nav::-webkit-scrollbar {
+    width: 6px!important;
+    background-color: #f5f4f4;
+  }
+  
+  .side-nav::-webkit-scrollbar-thumb {
+    background-color: rgb(206, 204, 204);
+  }
+  
+  .side-nav>ul {
+    margin: 3em 0em;
+    width: 100%;
+    border-top: .05em solid rgb(206, 204, 204);
+  }
+  
+  .side-nav>ul>li>h5 {
+    width: 100%;
+    padding: .8em;
+    border-bottom: .05em solid rgb(206, 204, 204);
+    text-align: start;
+  }
+  
+  .side-nav>ul>li:hover {
+    background-color: rgb(233, 232, 232);
+    cursor: pointer;
+  }
+  
+  .ch-center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .ch-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .ch-green,
+  i.ion-md-done-all,
+  i.ion-ios-done-all,
+  i.ion-md-create,
+  i.ion-md-checkmark,
+  i.ion-ios-checkmark,
+  i.ion-ios-create {
+    color: #2ecc71;
+  }
+  
