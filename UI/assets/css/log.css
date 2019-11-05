@@ -1,0 +1,58 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+body{
+    background: #39f;
+}
+.log{
+    margin: auto;
+    margin-top: 100px;
+    box-sizing: border-box;
+    z-index: 1;
+    border: 2px solid #39f;
+    border-radius: 6px;
+    width: 550px;
+    height: 100vh auto;
+    padding: 1.6em;
+}
+.log h1 ,.log p ,h4{
+    text-align: center;
+    color: #2082e4;
+    margin-top: 10px;
+    margin-bottom: 1em;
+}
+.log a ,h4 a{
+    color: blue;
+}
+input[type='text'],input[type='password'],input[type='email']{
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #2082e4;
+    width: 90%;
+    margin: 1em;
+    color: blue;
+    font-size: 14px;
+    background: rgb(231, 245, 248);
+}
+input[type='submit']{
+    outline: none;
+    border: none;
+    background: #2082e4;
+    color: white;
+    padding: 8px;
+    width: 50%;
+    border-radius: 20px;
+    margin-left: 25%;  
+}
+.reset{
+    color: blue;
+}
+@media(max-width:600px){
+    .log{
+        width: auto;
+        height: auto;
+        border: none;
+    }
+}
