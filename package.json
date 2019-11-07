@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node app.js",
     "start:dev": "nodemon --exec babel-node app.js",
-    "test": "./node_modules/.bin/mocha --require @babel/register"
+    "test": "./node_modules/.bin/mocha --require @babel/register ./src/tests/**/*.test.js"
   },
   "repository": {
     "type": "git",
