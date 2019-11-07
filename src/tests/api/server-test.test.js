@@ -22,7 +22,7 @@ describe('GET /', () => {
   });
 
   it('should return 404, when an unavailable route is requested', () => {
-    chai.request(server).get('/api/vi/ok').end((req, res) => {
+    chai.request(server).get('/api/vi/server').end((req, res) => {
       res.should.have.status(404);
       res.should.be.a('object');
       res.body.should.have.property('code').eql(404);
