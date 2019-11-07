@@ -39,4 +39,5 @@ app.listen(port, () => {
   console.log(`SERVER IS UP AND RUNNING ON PORT ${port}`);
 });
 
+export const server = app;
 export default app;
