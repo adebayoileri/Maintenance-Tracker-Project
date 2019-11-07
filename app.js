@@ -1,24 +1,27 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+/* eslint-disable linebreak-style */
+/* eslint-disable no-console */
+/* eslint-disable linebreak-style */
+import express from 'express';
+import bodyParser from 'body-parser';
 
 
 const app = express();
 const port = process.env.PORT || 3010;
 
-//Middlewares
+// Middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/', express.static('public'));
 
 
-//Invalid Routes
+// Invalid Routes
 app.all('*', (req, res) => res.status(404).json({
-    status: 'error',
-    code: 404,
-    message: 'Route unavailable on server.',
-  }));
-  
-  app.listen(port);
-  console.log(`SERVER IS UP ON PORT ${port}`);
+  status: 'error',
+  code: 404,
+  message: 'Route unavailable on server.',
+}));
 
-module.exports = app;
+app.listen(port);
+console.log(`SERVER IS UP AND RUNNING ON PORT ${port}`);
+
+export default app;
