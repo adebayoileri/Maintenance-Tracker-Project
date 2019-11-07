@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 chai.should();
 
 describe('/GET REQUESTS', () => {
-  it('should have return 200 and all requests sucessfully', () => {
+  it('should have return 200 and get all requests sucessfully', () => {
     chai.request(server).get('/api/v1/users/requests').end((req, res) => {
       res.should.have.a.status(200);
     });
