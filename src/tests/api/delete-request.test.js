@@ -12,8 +12,8 @@ chai.should();
 
 describe('DELETE /', () => {
   it('should return 200 , when request has been sucessfully deleted', () => {
-    chai.request(server).delete('api/v1/users/request/:requestId').end((req, res) => {
-      res.should.have.status(200);
+    chai.request(server).delete('/api/v1/users/requests/899').end((req, res) => {
+      res.should.have.a.status(200);
     });
   });
 });

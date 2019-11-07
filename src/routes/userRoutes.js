@@ -13,23 +13,28 @@ router.get('/:requestId', (req, res) => {
   const { requestId } = req.params;
   res.status(200).json({
     message: 'GET a specific request successful',
-    requestId,
+    id: requestId,
   });
 });
 
 // Modify Request
 router.put('/:requestId', (req, res) => {
   const { requestId } = req.params;
+  const { category } = req.body;
+  const { status } = req.body;
+  const { createdAt } = req.body;
   res.status(200).json({
     message: `Request with id${requestId} updated successfully`,
-    status: 'success',
+    status,
+    category,
+    createdAt,
     code: 200,
   });
 });
 
 
 // Add Request
-router.post('/create', (req, res) => {
+router.post('/', (req, res) => {
   const { category } = req.body;
   const { status } = req.body;
   const { createdAt } = req.body;
