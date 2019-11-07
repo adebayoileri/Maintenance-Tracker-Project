@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use('/api/v1/auth', AuthRoutes);
-app.use('/api/v1/user', UserRoutes);
+app.use('/api/v1/users/requests', UserRoutes);
 app.use('/api/v1/admin', AdminRoutes);
 
 // Test good route
