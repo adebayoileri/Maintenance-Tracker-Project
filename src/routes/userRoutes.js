@@ -13,7 +13,7 @@ router.get('/:requestId', (req, res) => {
   const { requestId } = req.params;
   res.status(200).json({
     message: 'GET a specific request successful',
-    id: requestId,
+    requestId,
   });
 });
 
@@ -29,7 +29,7 @@ router.put('/:requestId', (req, res) => {
 
 
 // Add Request
-router.post('/', (req, res) => {
+router.post('/create', (req, res) => {
   const { category } = req.body;
   const { status } = req.body;
   const { createdAt } = req.body;
