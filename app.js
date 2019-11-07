@@ -18,10 +18,15 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use('/', express.static('public'));
+app.use(express.static('public'));
 app.use('/api/v1/auth', AuthRoutes);
 app.use('/api/v1/user', UserRoutes);
 app.use('/api/v1/admin', AdminRoutes);
+
+// Test good route
+app.get('/', (req, res) => {
+  res.json({ message: 'welcome to the maintenance tracker app api/v1' });
+});
 
 // Invalid Routes
 app.all('*', (req, res) => res.status(404).json({
@@ -30,7 +35,8 @@ app.all('*', (req, res) => res.status(404).json({
   message: 'Route unavailable on server.',
 }));
 
-app.listen(port);
-console.log(`SERVER IS UP AND RUNNING ON PORT ${port}`);
+app.listen(port, () => {
+  console.log(`SERVER IS UP AND RUNNING ON PORT ${port}`);
+});
 
 export default app;
