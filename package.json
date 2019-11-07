@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node --exec babel-node app.js",
-    "start:dev":"nodemon --exec babel-node app.js",
+    "start:dev": "nodemon --exec babel-node app.js",
     "test": "./node_modules/.bin/mocha --require @babel/register"
   },
   "repository": {
@@ -29,10 +29,12 @@
     "@babel/register": "^7.7.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "coveralls": "^3.0.7",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "mocha": "^6.2.2",
-    "nodemon": "^1.19.4"
+    "nodemon": "^1.19.4",
+    "nyc": "^14.1.1"
   }
 }
