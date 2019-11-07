@@ -17,4 +17,44 @@ router.get('/:requestId', (req, res) => {
   });
 });
 
+// Modify Request
+router.put('/:requestId', (req, res) => {
+  const { requestId } = req.params;
+  res.status(200).json({
+    message: `Request with id${requestId} updated successfully`,
+    status: 'success',
+    code: 200,
+  });
+});
+
+
+// Add Request
+router.post('/', (req, res) => {
+  const { category } = req.body;
+  const { status } = req.body;
+  const { createdAt } = req.body;
+  const request = {
+    category,
+    status,
+    createdAt,
+  };
+  res.status(201).json({
+    message: 'Request Created',
+    status,
+    request,
+  });
+});
+
+
+// Delete a request
+router.delete('/:requestId', (req, res) => {
+  const { requestId } = req.params;
+  res.status(200).json({
+    message: 'Item requested successfullly deleted',
+    id: `${requestId} was deleted`,
+    code: 200,
+    status: 'success',
+  });
+});
+
 export default router;
