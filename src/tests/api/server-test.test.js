@@ -5,7 +5,7 @@ import chaiHttp from 'chai-http';
 import dotenv from 'dotenv';
 
 import { server } from '../../../app';
-// ./node_modules/.bin/mocha --require @babel/register
+
 dotenv.config();
 chai.use(chaiHttp);
 chai.should();
