@@ -24,7 +24,7 @@ router.put('/:requestId', (req, res) => {
   const { status } = req.body;
   const { createdAt } = req.body;
   res.status(200).json({
-    message: `Request with id${requestId} updated successfully`,
+    message: `Request with id ${requestId} updated successfully`,
     status,
     category,
     createdAt,

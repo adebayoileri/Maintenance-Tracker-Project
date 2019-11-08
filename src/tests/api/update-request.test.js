@@ -21,6 +21,12 @@ describe('UPDATE /', () => {
       })
       .end((req, res) => {
         res.should.have.status(200);
+        res.body.should.have
+          .property('message')
+          .eql('Request with id 899 updated successfully');
+        res.body.should.have.property('code').eql(200);
+        res.body.should.have.property('status');
+        res.body.should.have.property('category');
       });
   });
 });
