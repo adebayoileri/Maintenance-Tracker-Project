@@ -22,6 +22,9 @@ describe('POST /', () => {
       .end((req, res) => {
         res.should.have.status(201);
         res.should.be.a('object');
+        res.body.should.have.property('code').eql(201);
+        res.body.request.should.have.property('status');
+        res.body.request.should.have.property('category');
       });
   });
 });
