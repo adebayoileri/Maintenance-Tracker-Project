@@ -5,6 +5,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import logger from 'morgan';
+import path from 'path';
 import AuthRoutes from './src/routes/authRoutes';
 import UserRoutes from './src/routes/userRoutes';
 import AdminRoutes from './src/routes/adminRoutes';
@@ -12,6 +13,14 @@ import AdminRoutes from './src/routes/adminRoutes';
 
 const app = express();
 const port = process.env.PORT || 3010;
+
+// Deployment
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('public'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  });
+}
 
 // Middlewares
 app.use(cors());
