@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node --exec babel-node app.js",
     "start:dev": "nodemon --exec babel-node app.js",
-    "test": "./node_modules/.bin/nyc mocha --require @babel/register ./src/tests/**/*.test.js",
+    "test": "./node_modules/.bin/nyc mocha --require @babel/register ./src/tests/**/*.test.js --exit",
     "coverage":"nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
