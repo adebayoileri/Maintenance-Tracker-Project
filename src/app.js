@@ -15,12 +15,9 @@ const app = express();
 const port = process.env.PORT || 3010;
 
 // Deployment
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('public'));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public', 'index.html'));
-  });
-}
+const frontend = path.join(__dirname, '../public');
+app.use(express.static(frontend));
+
 
 // Middlewares
 app.use(cors());
