@@ -6,9 +6,9 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import logger from 'morgan';
 import path from 'path';
-import AuthRoutes from './src/routes/authRoutes';
-import UserRoutes from './src/routes/userRoutes';
-import AdminRoutes from './src/routes/adminRoutes';
+import AuthRoutes from './routes/authRoutes';
+import UserRoutes from './routes/userRoutes';
+import AdminRoutes from './routes/adminRoutes';
 
 
 const app = express();
