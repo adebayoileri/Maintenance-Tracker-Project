@@ -7,10 +7,10 @@
     "start": "npm run build && node ./build/app.js",
     "start:dev": "nodemon --exec babel-node ./src/app.js",
     "test": "./node_modules/.bin/nyc mocha --require @babel/register ./src/tests/**/*.test.js --exit",
-    "coverage":"nyc report --reporter=text-lcov | coveralls",
-    "clean":"rm -rf build && mkdir build",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./src -s",
-    "build":"npm run clean && npm run build-babel"
+    "build": "npm run clean && npm run build-babel"
   },
   "repository": {
     "type": "git",
