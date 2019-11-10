@@ -10,7 +10,7 @@ Maintenance Tracker App is an application that provides users with the ability t
 | PUT /users/requests/<requestId> | Modify a request. |
   
 ## Installation
-Clone the repo to your local machinea 
+Clone the repo to your local machine 
 - Run `npm install` to install all dependencies
 - Run `npm start` to start up server
 - Run `npm run test` for testing 
