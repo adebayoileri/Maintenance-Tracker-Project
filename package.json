@@ -4,10 +4,13 @@
   "description": "Maintenance Tracker App is an application that provides users with the ability to reach out to operations or repairs department regarding repair or maintenance requests and monitor the status of their request.",
   "main": "app.js",
   "scripts": {
-    "start": "node --exec babel-node app.js",
-    "start:dev": "nodemon --exec babel-node app.js",
+    "start": "npm run build && node ./build/app.js",
+    "start:dev": "nodemon --exec babel-node ./src/app.js",
     "test": "./node_modules/.bin/nyc mocha --require @babel/register ./src/tests/**/*.test.js --exit",
-    "coverage":"nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel"
   },
   "repository": {
     "type": "git",
@@ -27,14 +30,14 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
-    "pg": "^7.12.1"
-  },
-  "devDependencies": {
+    "pg": "^7.12.1",
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
     "@babel/node": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
-    "@babel/register": "^7.7.0",
+    "@babel/register": "^7.7.0"
+  },
+  "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "coveralls": "^3.0.7",

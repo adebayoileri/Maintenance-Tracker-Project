@@ -5,13 +5,19 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import logger from 'morgan';
-import AuthRoutes from './src/routes/authRoutes';
-import UserRoutes from './src/routes/userRoutes';
-import AdminRoutes from './src/routes/adminRoutes';
+import path from 'path';
+import AuthRoutes from './routes/authRoutes';
+import UserRoutes from './routes/userRoutes';
+import AdminRoutes from './routes/adminRoutes';
 
 
 const app = express();
 const port = process.env.PORT || 3010;
+
+// Deployment
+const frontend = path.join(__dirname, '../public');
+app.use(express.static(frontend));
+
 
 // Middlewares
 app.use(cors());
