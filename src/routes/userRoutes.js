@@ -3,6 +3,7 @@
 
 import express from 'express';
 import userController from '../controllers/user.controller';
+// import checkAuth from '../middlewares/checkAuth';
 
 const router = express.Router();
 
