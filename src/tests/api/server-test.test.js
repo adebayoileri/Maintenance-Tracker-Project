@@ -21,6 +21,12 @@ describe('GET /', () => {
     });
   });
 
+  it('should return status 200 when initial route is called', () => {
+    chai.request(server).get('/').end((req, res) => {
+      res.should.have.status(200);
+    });
+  });
+
   it('should return 404, when an unavailable route is requested', () => {
     chai.request(server).get('/api/vi/server').end((req, res) => {
       res.should.have.status(404);
