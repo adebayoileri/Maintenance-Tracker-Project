@@ -31,7 +31,11 @@ app.use('/api/v1/admin/requests', AdminRoutes);
 
 // Test good route
 app.get('/', (req, res) => {
-  res.json({ message: 'welcome to the maintenance tracker app api/v1' });
+  res.status(200).json(
+    {
+      message: 'welcome to the maintenance tracker app api/v1',
+    },
+  );
 });
 
 // Invalid Routes
