@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use('/api/v1/auth', AuthRoutes);
 app.use('/api/v1/users/requests', UserRoutes);
-app.use('/api/v1/admin', AdminRoutes);
+app.use('/api/v1/admin/requests', AdminRoutes);
 
 // Test good route
 app.get('/', (req, res) => {
