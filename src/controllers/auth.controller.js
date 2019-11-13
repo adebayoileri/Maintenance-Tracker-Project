@@ -4,8 +4,12 @@ class authController {
     const {
       firstname, lastname, email, password, password2,
     } = req.body;
-
-    res.status(201).json({
+    if (!firstname || !lastname || !password) {
+      return res.status(404).json({
+        message: 'Input all fields',
+      });
+    }
+    return res.status(201).json({
       messsage: 'User signup successfully',
       user: {
         firstname,

@@ -1,27 +1,24 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-console */
-import { Pool, Client } from 'pg';
+import pg from 'pg';
+import dotenv from 'dotenv';
 
-const pool = new Pool({
-  user: 'dbuser',
-  host: 'database.server.com',
-  database: 'mydb',
-  password: 'secretpassword',
-  port: 3211,
-});
-pool.query('SELECT NOW()', (err, res) => {
-  console.log(err, res);
-  pool.end();
-});
-const client = new Client({
-  user: 'dbuser',
-  host: 'database.server.com',
-  database: 'mydb',
-  password: 'secretpassword',
-  port: 3211,
-});
-client.connect();
-client.query('SELECT NOW()', (err, res) => {
-  console.log(err, res);
-  client.end();
+
+dotenv.config();
+
+const connectionString = {
+  user: process.env.DB_USER,
+  port: process.env.DB_PORT,
+  host: process.env.DB_HOST,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+};
+
+const pool = new pg.Pool(connectionString);
+
+pool.on('connect', (error) => {
+  if (error) {
+    console.log('Couldn\'t connect to database');
+  }
+  console.log('DATABASE CONNECTED');
 });
