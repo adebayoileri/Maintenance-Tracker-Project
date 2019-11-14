@@ -64,26 +64,30 @@ class userController {
     }
   }
 
-  static createRequest(req, res) {
-    const { category } = req.body;
-    const { status } = req.body;
-    const { createdAt } = req.body;
-    const request = {
-      category,
-      status,
-      createdAt,
-    };
-    res.status(201).json({
-      message: 'Request Created',
-      code: 201,
-      request,
-    });
+  static async createRequest(req, res, next) {
+    const {
+      title, description, category, status, itemType,
+    } = req.body;
+    if (!title) return res.status(404).json('Input all fields');
+    try {
+      const queryText = 'INSERT INTO requests (title, description, category, status, created_at, itemType) VALUES($1,$2,$3,$4,NOW(),$5) RETURNING *';
+      const values = [title, description, category, status, itemType];
+      const newRequest = await pool.query(queryText, values);
+      return res.status(201).json({
+        message: 'Request Created',
+        code: 201,
+        newRequest: newRequest.rows,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+    return next();
   }
 
   static deleteRequest(req, res) {
     const { requestId } = req.params;
     res.status(200).json({
-      message: 'Item requested successfullly deleted',
+      message: 'Item requested successfully deleted',
       id: `${requestId} was deleted`,
       code: 200,
       status: 'success',
