@@ -1,7 +1,24 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-console */
+
+import pool from '../models/db';
+
 class userController {
-  static getAllRequests(req, res) {
-    res.status(200).json({ message: 'GET request successful' });
+  static async getAllRequests(req, res, next) {
+    try {
+      const queryText = 'SELECT * FROM requests';
+      const requests = await pool.query(queryText);
+      if (!requests.rows.length) return res.status(404).json('No Requests Found');
+      return res.status(200).json(
+        {
+          message: 'GET request successful',
+          requests: requests.rows,
+        },
+      );
+    } catch (error) {
+      console.error(error);
+    }
+    return next();
   }
 
   static getSingleRequest(req, res) {

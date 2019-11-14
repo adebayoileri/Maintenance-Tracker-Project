@@ -66,15 +66,16 @@ const createUserTable = async () => {
 //   }
 // };
 
-const insertUser = async () => {
-  const queryText = 'INSERT INTO users(email, firstname, lastname, password) VALUES(\'adebayorilerioluwa@gmail.com\',\'Ilerioluwa\', \'Adebayo\', \'adeilerioluwa\' )';
-  try {
-    await pool.query(queryText);
-    console.log('User Inserted');
-  } catch (error) {
-    console.error(error);
-  }
-};
+// const insertUser = async () => {
+// eslint-disable-next-line max-len
+//   const queryText = 'INSERT INTO users(email, firstname, lastname, password) VALUES(\'adebayorilerioluwa@gmail.com\',\'Ilerioluwa\', \'Adebayo\', \'adeilerioluwa\' )';
+//   try {
+//     await pool.query(queryText);
+//     console.log('User Inserted');
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
 
 // const dropTable = async () => {
 //   try {
@@ -91,5 +92,7 @@ createRequestsTable();
 // insertRequest();
 createUserTable();
 
-insertUser();
+// insertUser();
 // dropTable();
+
+export default pool;
