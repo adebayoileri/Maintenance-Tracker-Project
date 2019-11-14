@@ -84,13 +84,13 @@ class userController {
     return next();
   }
 
-  static async deleteRequest(req, res) {
+  static async deleteRequest(req, res, next) {
     const { requestId } = req.params;
     try {
       const queryText = 'DELETE FROM requests WHERE requestId=$1';
       const value = [requestId];
       const deletedRequest = await pool.query(queryText, value);
-      if(!deletedRequest.rowCount) return res.status(404).json('No request is associated with this ID');
+      if (!deletedRequest.rowCount) return res.status(404).json('No request is associated with this ID');
 
       return res.status(200).json({
         message: 'Item requested successfully deleted',
@@ -101,6 +101,7 @@ class userController {
     } catch (error) {
       console.error(error);
     }
+    return next();
   }
 }
 export default userController;
