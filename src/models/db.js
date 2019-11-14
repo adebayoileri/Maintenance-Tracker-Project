@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-console */
-import pg from 'pg';
-import dotenv from 'dotenv';
+const pg = require('pg');
+const dotenv = require('dotenv');
 
 
 dotenv.config();
@@ -16,9 +16,50 @@ const connectionString = {
 
 const pool = new pg.Pool(connectionString);
 
-pool.on('connect', (error) => {
-  if (error) {
-    console.log('Couldn\'t connect to database');
-  }
+pool.on('connect', () => {
   console.log('DATABASE CONNECTED');
 });
+
+const createRequestsTable = async () => {
+  const queryText = `CREATE TABLE IF NOT EXISTS
+  requests(requestId SERIAL PRIMARY KEY UNIQUE,
+      title VARCHAR(128) NOT NULL,
+      itemType VARCHAR(200) NOT NULL ,
+      description VARCHAR(250) NOT NULL,
+      category VARCHAR(200) NOT NULL,
+      status VARCHAR(25) NOT NULL,
+      created_at DATE NOT NULL)`;
+  try {
+    await pool.query(queryText);
+    console.log('Table created');
+  } catch (e) {
+    // pool.end();
+    console.log(e);
+  }
+};
+
+const insertRequest = async () => {
+  const queryText = 'INSERT INTO requests(title, itemType,description, category, status, created_at) VALUES(\'FanProblem\',\'Iron fan\', \'Fanbrokeovernight\', \'repair\',\'pending\', NOW())';
+  try {
+    await pool.query(queryText);
+    console.log('Inserted');
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// const dropTable = async () => {
+//   try {
+//     const query = 'DROP TABLE IF EXISTS requests';
+//     await pool.query(query);
+//     console.log('Table dropped');
+//   } catch (e) {
+//     pool.end();
+//   }
+// };
+
+
+createRequestsTable();
+insertRequest();
+
+// dropTable();
