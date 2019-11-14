@@ -84,14 +84,23 @@ class userController {
     return next();
   }
 
-  static deleteRequest(req, res) {
+  static async deleteRequest(req, res) {
     const { requestId } = req.params;
-    res.status(200).json({
-      message: 'Item requested successfully deleted',
-      id: `${requestId} was deleted`,
-      code: 200,
-      status: 'success',
-    });
+    try {
+      const queryText = 'DELETE FROM requests WHERE requestId=$1';
+      const value = [requestId];
+      const deletedRequest = await pool.query(queryText, value);
+      if(!deletedRequest.rowCount) return res.status(404).json('No request is associated with this ID');
+
+      return res.status(200).json({
+        message: 'Item requested successfully deleted',
+        id: `${requestId} was deleted`,
+        code: 200,
+        status: 'success',
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
 export default userController;
