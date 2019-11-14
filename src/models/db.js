@@ -38,11 +38,39 @@ const createRequestsTable = async () => {
   }
 };
 
-const insertRequest = async () => {
-  const queryText = 'INSERT INTO requests(title, itemType,description, category, status, created_at) VALUES(\'FanProblem\',\'Iron fan\', \'Fanbrokeovernight\', \'repair\',\'pending\', NOW())';
+
+const createUserTable = async () => {
+  const queryText = `CREATE TABLE IF NOT EXISTS
+  users(userId BIGSERIAL PRIMARY KEY UNIQUE,
+      email VARCHAR(250) NOT NULL UNIQUE,
+      firstname VARCHAR(150) NOT NULL,
+      lastname VARCHAR(150) NOT NULL,
+      password VARCHAR(150) NOT NULL
+    )`;
   try {
     await pool.query(queryText);
-    console.log('Inserted');
+    console.log('user table created');
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// const insertRequest = async () => {
+// eslint-disable-next-line max-len
+//   const queryText = 'INSERT INTO requests(title, itemType,description, category, status, created_at) VALUES(\'FanProblem\',\'Iron fan\', \'Fanbrokeovernight\', \'repair\',\'pending\', NOW())';
+//   try {
+//     await pool.query(queryText);
+//     console.log('Inserted');
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
+
+const insertUser = async () => {
+  const queryText = 'INSERT INTO users(email, firstname, lastname, password) VALUES(\'adebayorilerioluwa@gmail.com\',\'Ilerioluwa\', \'Adebayo\', \'adeilerioluwa\' )';
+  try {
+    await pool.query(queryText);
+    console.log('User Inserted');
   } catch (error) {
     console.error(error);
   }
@@ -60,6 +88,8 @@ const insertRequest = async () => {
 
 
 createRequestsTable();
-insertRequest();
+// insertRequest();
+createUserTable();
 
+insertUser();
 // dropTable();
