@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+
 class authController {
   static signUp(req, res) {
     const {
