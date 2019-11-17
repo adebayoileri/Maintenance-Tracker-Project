@@ -20,6 +20,7 @@ describe('POST /Signup', () => {
       password2: 'knmkml',
     }).end((req, res) => {
       res.should.have.status(201);
+      res.body.should.have.a('object');
       done();
     });
   });
@@ -31,6 +32,7 @@ describe('POST /Signup', () => {
       password2: 'knmkml',
     }).end((req, res) => {
       res.should.have.status(404);
+      res.body.should.have.property('message').eql('Input all fields');
       done();
     });
   });

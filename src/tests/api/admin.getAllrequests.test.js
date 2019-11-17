@@ -13,7 +13,7 @@ chai.should();
 describe('GET ALL REQUESTS /', () => {
   it('should have a status 200 gets all  requests successfully', () => {
     chai.request(server).get('/api/v1/admin/requests/').end((req, res) => {
-      res.should.have.a.status(200);
+      res.should.have.status(200);
       res.body.should.have.property('message').eql('get all requests to admin successful');
     });
   });

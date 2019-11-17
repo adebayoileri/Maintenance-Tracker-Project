@@ -11,9 +11,11 @@ chai.use(chaiHttp);
 chai.should();
 
 describe('POST /Login', () => {
-  it('should have a status of 201 when user signup', () => {
+  it('should have a status of 201 when user signup', (done) => {
     chai.request(server).post('/api/v1/auth/login').end((req, res) => {
       res.should.have.status(200);
+      res.body.should.have.property('message').eql('Login Successful');
+      done();
     });
   });
 });

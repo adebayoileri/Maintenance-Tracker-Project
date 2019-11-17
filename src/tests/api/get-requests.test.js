@@ -13,7 +13,16 @@ chai.should();
 describe('/GET REQUESTS', () => {
   it('should have return 200 and get all requests sucessfully', () => {
     chai.request(server).get('/api/v1/users/requests').end((req, res) => {
-      res.should.have.a.status(200);
+      res.should.have.status(200);
+      res.body.should.have.property('message').eql('GET request successful');
+      res.should.be.a('object');
+    });
+  });
+
+  it('should have return 404 when not requests found', () => {
+    chai.request(server).get('/api/v1/users/requests').end((req, res) => {
+      res.should.have.status(404);
+      res.body.eql('No Requests Found');
     });
   });
 });

@@ -13,7 +13,7 @@ chai.should();
 describe('APPROVE /', () => {
   it('should have a status 200 when request approves successfully', () => {
     chai.request(server).put('/api/v1/admin/requests/889/approve').end((req, res) => {
-      res.should.have.a.status(200);
+      res.should.have.status(200);
       res.body.should.have.property('message').eql('Approved request with id 889 successfully');
     });
   });

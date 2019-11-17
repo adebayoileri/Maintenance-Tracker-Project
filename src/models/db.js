@@ -17,43 +17,42 @@ const connectionString = {
 const pool = new pg.Pool(connectionString);
 
 pool.on('connect', () => {
-  console.log('DATABASE CONNECTED');
 });
 
-const createRequestsTable = async () => {
-  const queryText = `CREATE TABLE IF NOT EXISTS
-  requests(requestId SERIAL PRIMARY KEY UNIQUE,
-      title VARCHAR(128) NOT NULL,
-      itemType VARCHAR(200) NOT NULL ,
-      description VARCHAR(250) NOT NULL,
-      category VARCHAR(200) NOT NULL,
-      status VARCHAR(25) NOT NULL,
-      created_at DATE NOT NULL)`;
-  try {
-    await pool.query(queryText);
-    console.log('Table created');
-  } catch (e) {
-    // pool.end();
-    console.log(e);
-  }
-};
+// const createRequestsTable = async () => {
+//   const queryText = `CREATE TABLE IF NOT EXISTS
+//   requests(requestId SERIAL PRIMARY KEY UNIQUE,
+//       title VARCHAR(128) NOT NULL,
+//       itemType VARCHAR(200) NOT NULL ,
+//       description VARCHAR(250) NOT NULL,
+//       category VARCHAR(200) NOT NULL,
+//       status VARCHAR(25) NOT NULL,
+//       created_at DATE NOT NULL)`;
+//   try {
+//     await pool.query(queryText);
+//     console.log('Table created');
+//   } catch (e) {
+//     // pool.end();
+//     console.log(e);
+//   }
+// };
 
 
-const createUserTable = async () => {
-  const queryText = `CREATE TABLE IF NOT EXISTS
-  users(userId BIGSERIAL PRIMARY KEY UNIQUE,
-      email VARCHAR(250) NOT NULL UNIQUE,
-      firstname VARCHAR(150) NOT NULL,
-      lastname VARCHAR(150) NOT NULL,
-      password VARCHAR(150) NOT NULL
-    )`;
-  try {
-    await pool.query(queryText);
-    console.log('user table created');
-  } catch (error) {
-    console.error(error);
-  }
-};
+// const createUserTable = async () => {
+//   const queryText = `CREATE TABLE IF NOT EXISTS
+//   users(userId BIGSERIAL PRIMARY KEY UNIQUE,
+//       email VARCHAR(250) NOT NULL UNIQUE,
+//       firstname VARCHAR(150) NOT NULL,
+//       lastname VARCHAR(150) NOT NULL,
+//       password VARCHAR(150) NOT NULL
+//     )`;
+//   try {
+//     await pool.query(queryText);
+//     console.log('user table created');
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
 
 // const insertRequest = async () => {
 // eslint-disable-next-line max-len
@@ -88,9 +87,9 @@ const createUserTable = async () => {
 // };
 
 
-createRequestsTable();
+// createRequestsTable();
 // insertRequest();
-createUserTable();
+// createUserTable();
 
 // insertUser();
 // dropTable();

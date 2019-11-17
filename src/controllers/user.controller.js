@@ -1,11 +1,9 @@
 /* eslint-disable linebreak-style */
-/* eslint-disable camelcase */
-/* eslint-disable no-console */
 
 import pool from '../models/db';
 
 class userController {
-  static async getAllRequests(req, res, next) {
+  static async getAllRequests(req, res) {
     try {
       const queryText = 'SELECT * FROM requests';
       const requests = await pool.query(queryText);
@@ -17,9 +15,8 @@ class userController {
         },
       );
     } catch (error) {
-      console.error(error);
+      return error;
     }
-    return next();
   }
 
   static async getSingleRequest(req, res) {
@@ -55,6 +52,7 @@ class userController {
       const updatedRequest = await pool.query(query, values);
       return res.status(200).json({
         message: 'Request updated successfully',
+        code: 200,
         request: updatedRequest.rows,
       });
     } catch (e) {
@@ -64,7 +62,7 @@ class userController {
     }
   }
 
-  static async createRequest(req, res, next) {
+  static async createRequest(req, res) {
     const {
       title, description, category, status, itemType,
     } = req.body;
@@ -79,12 +77,11 @@ class userController {
         newRequest: newRequest.rows,
       });
     } catch (error) {
-      console.error(error);
+      return error;
     }
-    return next();
   }
 
-  static async deleteRequest(req, res, next) {
+  static async deleteRequest(req, res) {
     const { requestId } = req.params;
     try {
       const queryText = 'DELETE FROM requests WHERE requestId=$1';
@@ -99,9 +96,9 @@ class userController {
         status: 'success',
       });
     } catch (error) {
-      console.error(error);
+      return error;
     }
-    return next();
   }
 }
+
 export default userController;

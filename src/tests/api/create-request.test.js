@@ -11,21 +11,22 @@ chai.use(chaiHttp);
 chai.should();
 
 describe('POST /', () => {
-  it('should have a status 201 when request has been successfully created', () => {
+  it('should have a status 201 when request has been successfully created', (done) => {
     chai.request(server)
-      .post('/api/v1/users/requests')
+      .post('/api/v1/users/requests/')
       .send({
-        category: 'Transport',
-        status: 'bad',
-        createdAt: '2001-23-22',
+        title: 'Laptop port is on fire',
+        itemType: 'Accespories',
+        description: 'Burnt PORT',
+        category: 'replacement',
+        status: 'resolved',
       })
       .end((req, res) => {
         res.should.have.status(201);
         res.should.be.a('object');
         res.body.should.have.property('message').eql('Request Created');
         res.body.should.have.property('code').eql(201);
-        res.body.request.should.have.property('status');
-        res.body.request.should.have.property('category');
+        done();
       });
   });
 });

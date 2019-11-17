@@ -11,9 +11,20 @@ chai.use(chaiHttp);
 chai.should();
 
 describe('DELETE /', () => {
-  it('should return 200 , when request has been sucessfully deleted', () => {
+  it('should return 200 , when request has been sucessfully deleted', (done) => {
     chai.request(server).delete('/api/v1/users/requests/899').end((req, res) => {
-      res.should.have.a.status(200);
+      res.should.have.status(200);
+      res.body.should.have.property('message').eql('Item requested successfully deleted');
+      res.body.should.have.property('code').eql(200);
+      res.body.should.have.property('status').eql('success');
+      done();
+    });
+  });
+
+  it('should return 404 , when request has not been deleted', (done) => {
+    chai.request(server).delete('/api/v1/users/requests/8fgfdgg99').end((req, res) => {
+      res.should.have.status(404);
+      done();
     });
   });
 });

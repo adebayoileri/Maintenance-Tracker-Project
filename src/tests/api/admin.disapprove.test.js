@@ -13,7 +13,7 @@ chai.should();
 describe('DISAPPROVE /', () => {
   it('should have a status 200 when request disapproves successfully', () => {
     chai.request(server).put('/api/v1/admin/requests/889/disapprove').end((req, res) => {
-      res.should.have.a.status(200);
+      res.should.have.status(200);
       res.body.should.have.property('message').eql('Disapproved request with id 889 successfully');
     });
   });
