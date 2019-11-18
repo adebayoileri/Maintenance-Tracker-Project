@@ -20,9 +20,8 @@ describe('/GET REQUESTS', () => {
   });
 
   it('should have return 404 when not requests found', () => {
-    chai.request(server).get('/api/v1/users/requests').end((req, res) => {
+    chai.request(server).get('/api/v1/users/requess').end((req, res) => {
       res.should.have.status(404);
-      res.body.eql('No Requests Found');
     });
   });
 });

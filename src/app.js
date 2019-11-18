@@ -10,7 +10,6 @@ import AuthRoutes from './routes/authRoutes';
 import UserRoutes from './routes/userRoutes';
 import AdminRoutes from './routes/adminRoutes';
 
-
 const app = express();
 const port = process.env.PORT || 3010;
 

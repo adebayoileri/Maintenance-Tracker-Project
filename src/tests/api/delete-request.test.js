@@ -22,7 +22,7 @@ describe('DELETE /', () => {
   });
 
   it('should return 404 , when request has not been deleted', (done) => {
-    chai.request(server).delete('/api/v1/users/requests/8fgfdgg99').end((req, res) => {
+    chai.request(server).delete('/api/v1/users/requess/899').end((req, res) => {
       res.should.have.status(404);
       done();
     });
