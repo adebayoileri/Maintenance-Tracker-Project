@@ -19,23 +19,22 @@ const pool = new pg.Pool(connectionString);
 pool.on('connect', () => {
 });
 
-// const createRequestsTable = async () => {
-//   const queryText = `CREATE TABLE IF NOT EXISTS
-//   requests(requestId SERIAL PRIMARY KEY UNIQUE,
-//       title VARCHAR(128) NOT NULL,
-//       itemType VARCHAR(200) NOT NULL ,
-//       description VARCHAR(250) NOT NULL,
-//       category VARCHAR(200) NOT NULL,
-//       status VARCHAR(25) NOT NULL,
-//       created_at DATE NOT NULL)`;
-//   try {
-//     await pool.query(queryText);
-//     console.log('Table created');
-//   } catch (e) {
-//     // pool.end();
-//     console.log(e);
-//   }
-// };
+const createRequestsTable = async () => {
+  const queryText = `CREATE TABLE IF NOT EXISTS
+  requests(requestId SERIAL PRIMARY KEY UNIQUE,
+      title VARCHAR(128) NOT NULL,
+      itemType VARCHAR(200) NOT NULL ,
+      description VARCHAR(250) NOT NULL,
+      category VARCHAR(200) NOT NULL,
+      status VARCHAR(25) NOT NULL,
+      created_at DATE NOT NULL)`;
+  try {
+    await pool.query(queryText);
+    console.log('Table created');
+  } catch (e) {
+    // pool.end();
+  }
+};
 
 
 // const createUserTable = async () => {
@@ -87,7 +86,7 @@ pool.on('connect', () => {
 // };
 
 
-// createRequestsTable();
+createRequestsTable();
 // insertRequest();
 // createUserTable();
 

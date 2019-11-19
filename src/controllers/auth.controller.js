@@ -1,25 +1,48 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable consistent-return */
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+import pool from '../models/db';
+
 
 class authController {
-  static signUp(req, res) {
+  static async signUp(req, res) {
     const {
-      firstname, lastname, email, password, password2,
+      firstname, lastname, email, password,
     } = req.body;
-    if (!firstname || !lastname || !password) {
-      return res.status(404).json({
-        message: 'Input all fields',
-      });
+    try {
+      const userExistsCheck = 'SELECT * FROM users WHERE email=$1';
+      const value = [email];
+      const checkResult = await pool.query(userExistsCheck, value);
+
+      if (!firstname || !lastname || !password) {
+        return res.status(400).json({
+          message: 'Input all required fields',
+        });
+      }
+
+      // Password Hashing Process
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+
+      if (checkResult.rows[0]) {
+        res.status(400).json({
+          message: 'username already exist',
+        });
+      } else {
+        const signUpUser = 'INSERT INTO users(email, firstname, lastname, password) VALUES($1,$2,$3,$4) RETURNING *';
+        const values = [email, firstname, lastname, hashedPassword];
+        const newUser = await pool.query(signUpUser, values);
+
+        // Token Generation
+        jwt.sign({ email, password }, process.env.JWT_KEY, { expiresIn: '3h' }, (error, token) => res.status(201).json({
+          user: newUser.rows[0],
+          token,
+        }));
+      }
+    } catch (error) {
+      return error;
     }
-    return res.status(201).json({
-      messsage: 'User signup successfully',
-      user: {
-        firstname,
-        lastname,
-        email,
-        password,
-        password2,
-      },
-    });
   }
 
   static login(req, res) {
