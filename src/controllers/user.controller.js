@@ -7,7 +7,7 @@ class userController {
     try {
       const queryText = 'SELECT * FROM requests';
       const requests = await pool.query(queryText);
-      if (!requests.rows.length) return res.status(404).json('No Requests Found');
+      if (!requests.rows.length) return res.status(400).json('No Requests Found');
       return res.status(200).json(
         {
           message: 'GET request successful',
@@ -24,7 +24,7 @@ class userController {
     const queryText = 'SELECT * FROM requests WHERE requestId=$1';
     const value = [requestId];
     const request = await pool.query(queryText, value);
-    if (!request.rows.length) return res.status(404).json('No request associated is with this id');
+    if (!request.rows.length) return res.status(400).json('No request associated is with this id');
     return res.status(200).json({
       message: 'GET a specific request successful',
       id: requestId,
@@ -39,13 +39,11 @@ class userController {
       const value = [requestId];
       const request = await pool.query(queryText, value);
       if (!request.rows.length) { return res.status(404).json('No request associated with this ID'); }
-      const response = request.rows[0];
+      // const response = request.rows[0];
 
-      const title = req.body.title || response.title;
-      const description = req.body.description || response.description;
-      const itemType = req.body.itemType || response.itemType;
-      const status = req.body.status || response.status;
-      const category = req.body.category || response.category;
+      const {
+        title, description, itemType, status, category,
+      } = req.body;
 
       const query = 'UPDATE requests SET title=$1,description=$2,itemType=$3,status=$4,category=$5,created_at=NOW() WHERE requestId=$6 RETURNING *';
       const values = [title, description, itemType, status, category, requestId];

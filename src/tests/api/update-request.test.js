@@ -13,7 +13,7 @@ chai.should();
 describe('UPDATE /', () => {
   it('should return status code 200', (done) => {
     chai.request(server)
-      .put('/api/v1/users/requests/899')
+      .put('/api/v1/users/requests/9')
       .send({
         title: 'PS4 is on fire',
         itemType: 'PS4 Burnt',
@@ -30,9 +30,9 @@ describe('UPDATE /', () => {
         done();
       });
   });
-  it('should return status code 404 when request not found', (done) => {
+  it('should return status code 400 when request not found', (done) => {
     chai.request(server)
-      .put('/api/v1/users/requests/89kjfdjjkdfs839')
+      .put('/api/v1/users/requests/839')
       .send({
         title: 'PS4 is on fire',
         itemType: 'PS4 Burnt',
@@ -41,10 +41,7 @@ describe('UPDATE /', () => {
         status: 'pending',
       })
       .end((req, res) => {
-        res.should.have.status(200);
-        res.body.should.have
-          .property('message')
-          .eql('Cannot update request with id 89kjfdjjkdfs839  because it doesn\'t exist on our server');
+        res.should.have.status(404);
         done();
       });
   });
