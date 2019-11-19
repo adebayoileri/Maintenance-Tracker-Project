@@ -1,12 +1,26 @@
 /* eslint-disable linebreak-style */
+
+import pool from '../models/db';
+
 class adminController {
-  static getAllUserRequests(req, res) {
-    res.status(200).json({ message: 'get all requests to admin successful' });
+  static async getAllUserRequests(req, res) {
+    try {
+      const queryText = 'SELECT * FROM requests';
+      const requests = await pool.query(queryText);
+      if (!requests.rows.length) return res.status(400).json('No Requests Found');
+      return res.status(200).json({ message: 'get all requests to admin successful' });
+    } catch (error) {
+      return error;
+    }
   }
 
-  static approveRequest(req, res) {
+  static async approveRequest(req, res) {
     const { requestId } = req.params;
-    res.status(200).json({ message: `Approved request with id ${requestId} successfully` });
+    res.status(200).json(
+      {
+        message: `Approved request with id ${requestId} successfully`,
+      },
+    );
   }
 
   static disapproveRequest(req, res) {
