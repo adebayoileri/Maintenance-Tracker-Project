@@ -6,7 +6,7 @@ import pool from '../models/db';
 
 
 class authController {
-  static async signUp(req, res) {
+  async signUp(req, res) {
     const {
       firstname, lastname, email, password,
     } = req.body;
@@ -45,15 +45,33 @@ class authController {
     }
   }
 
-  static login(req, res) {
+  async login(req, res) {
     const { email, password } = req.body;
-    res.status(200).json({
-      message: 'Login Successful',
-      userData: {
-        email,
-        password,
-      },
-    });
+    try {
+      const loginUser = 'SELECT * FROM users WHERE email=$1';
+      const value = [email];
+      const user = await pool.query(loginUser, value);
+      if (!user.rows.length) {
+        res.status(403).json({ message: 'This email doesn\'t seem to exists on our server. Signup if you haven\'t' });
+      }
+      const matchedPassword = bcrypt.compareSync(password, user.rows[0].password);
+
+      if (matchedPassword) {
+        jwt.sign({ email, password }, process.env.JWT_KEY, { expiresIn: '5h' }, (error, token) => {
+          res.status(200).json({
+            message: 'Login Successful',
+            token,
+            userData: user.rows[0],
+          });
+        });
+      } else {
+        res.status(403).json({
+          message: 'Invalid password Pls try again',
+        });
+      }
+    } catch (error) {
+      return error;
+    }
   }
 }
 

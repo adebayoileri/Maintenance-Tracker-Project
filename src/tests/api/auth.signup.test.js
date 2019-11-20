@@ -31,8 +31,8 @@ describe('POST /Signup', () => {
       password: 'kpjkljl',
       password2: 'knmkml',
     }).end((req, res) => {
-      res.should.have.status(404);
-      res.body.should.have.property('message').eql('Input all fields');
+      res.should.have.status(400);
+      res.body.should.have.property('message').eql('Input all required fields');
       done();
     });
   });
