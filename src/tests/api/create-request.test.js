@@ -20,6 +20,7 @@ describe('POST /', () => {
         description: 'Burnt PORT',
         category: 'replacement',
         status: 'resolved',
+        userId: 1,
       })
       .end((req, res) => {
         res.should.have.status(201);

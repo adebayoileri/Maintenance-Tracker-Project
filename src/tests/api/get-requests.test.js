@@ -12,7 +12,9 @@ chai.should();
 
 describe('/GET REQUESTS', () => {
   it('should have return 200 and get all requests sucessfully', () => {
-    chai.request(server).get('/api/v1/users/requests').end((req, res) => {
+    chai.request(server).get('/api/v1/users/requests').send({
+      userId: 1,
+    }).end((req, res) => {
       res.should.have.status(200);
       res.body.should.have.property('message').eql('GET request successful');
       res.should.be.a('object');

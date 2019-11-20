@@ -6,7 +6,7 @@ import pool from '../models/db';
 
 
 class authController {
-  async signUp(req, res) {
+  static async signUp(req, res) {
     const {
       firstname, lastname, email, password,
     } = req.body;
@@ -45,7 +45,7 @@ class authController {
     }
   }
 
-  async login(req, res) {
+  static async login(req, res) {
     const { email, password } = req.body;
     try {
       const loginUser = 'SELECT * FROM users WHERE email=$1';
@@ -61,6 +61,7 @@ class authController {
           res.status(200).json({
             message: 'Login Successful',
             token,
+            userId: user.rows[0].userid,
             userData: user.rows[0],
           });
         });

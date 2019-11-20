@@ -13,7 +13,7 @@ chai.should();
 describe('UPDATE /', () => {
   it('should return status code 200', (done) => {
     chai.request(server)
-      .put('/api/v1/users/requests/9')
+      .put('/api/v1/users/requests/8')
       .send({
         title: 'PS4 is on fire',
         itemType: 'PS4 Burnt',
@@ -32,7 +32,7 @@ describe('UPDATE /', () => {
   });
   it('should return status code 400 when request not found', (done) => {
     chai.request(server)
-      .put('/api/v1/users/requests/839')
+      .put('/api/v1/users/requests/4')
       .send({
         title: 'PS4 is on fire',
         itemType: 'PS4 Burnt',

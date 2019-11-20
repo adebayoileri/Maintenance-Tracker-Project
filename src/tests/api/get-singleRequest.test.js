@@ -12,11 +12,11 @@ chai.should();
 
 describe('/GET SINGLE REQUEST', () => {
   it('should have return 200 and get all requests sucessfully', () => {
-    chai.request(server).get('/api/v1/users/requests/7').end((req, res) => {
+    chai.request(server).get('/api/v1/users/requests/3').end((req, res) => {
       res.should.have.status(200);
       res.body.should.have.property('message').eql('GET a specific request successful');
       res.should.be.a('object');
-      res.body.should.have.property('id').eql('7');
+      res.body.should.have.property('id').eql('3');
     });
   });
   it('should have return 404 if no requests found', () => {

@@ -12,9 +12,9 @@ chai.should();
 
 describe('APPROVE /', () => {
   it('should have a status 200 when request approves successfully', () => {
-    chai.request(server).put('/api/v1/admin/requests/18/approve').end((req, res) => {
+    chai.request(server).put('/api/v1/admin/requests/3/approve').end((req, res) => {
       res.should.have.status(200);
-      res.body.should.have.property('message').eql('Approved request with id 18 successfully');
+      res.body.should.have.property('message').eql('Approved request with id 3 successfully');
     });
   });
 });

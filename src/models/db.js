@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable consistent-return */
 /* eslint-disable no-console */
 const pg = require('pg');
 const dotenv = require('dotenv');
@@ -20,14 +21,15 @@ pool.on('connect', () => {
 });
 
 const createRequestsTable = async () => {
-  const queryText = `CREATE TABLE IF NOT EXISTS
-  requests(requestId SERIAL PRIMARY KEY UNIQUE,
+  const queryText = `CREATE TABLE IF NOT EXISTS requests(requestId SERIAL PRIMARY KEY UNIQUE,
       title VARCHAR(128) NOT NULL,
       itemType VARCHAR(200) NOT NULL ,
       description VARCHAR(250) NOT NULL,
       category VARCHAR(200) NOT NULL,
       status VARCHAR(25) NOT NULL,
-      created_at DATE NOT NULL)`;
+      created_at DATE NOT NULL,
+      userId INT NOT NULL,
+      FOREIGN KEY(userId) REFERENCES users(userId) ON DELETE CASCADE ON UPDATE CASCADE)`;
   try {
     await pool.query(queryText);
     console.log('Table created');
@@ -37,21 +39,21 @@ const createRequestsTable = async () => {
 };
 
 
-// const createUserTable = async () => {
-//   const queryText = `CREATE TABLE IF NOT EXISTS
-//   users(userId BIGSERIAL PRIMARY KEY UNIQUE,
-//       email VARCHAR(250) NOT NULL UNIQUE,
-//       firstname VARCHAR(150) NOT NULL,
-//       lastname VARCHAR(150) NOT NULL,
-//       password VARCHAR(150) NOT NULL
-//     )`;
-//   try {
-//     await pool.query(queryText);
-//     console.log('user table created');
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
+const createUserTable = async () => {
+  const queryText = `CREATE TABLE IF NOT EXISTS
+  users(userId SERIAL PRIMARY KEY UNIQUE,
+      email VARCHAR(250) NOT NULL UNIQUE,
+      firstname VARCHAR(150) NOT NULL,
+      lastname VARCHAR(150) NOT NULL,
+      password VARCHAR(150) NOT NULL
+    )`;
+  try {
+    await pool.query(queryText);
+    console.log('user table created');
+  } catch (error) {
+    return error;
+  }
+};
 
 // const insertRequest = async () => {
 // eslint-disable-next-line max-len
@@ -88,7 +90,7 @@ const createRequestsTable = async () => {
 
 createRequestsTable();
 // insertRequest();
-// createUserTable();
+createUserTable();
 
 // insertUser();
 // dropTable();

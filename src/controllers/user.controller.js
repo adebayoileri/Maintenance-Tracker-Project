@@ -4,9 +4,11 @@ import pool from '../models/db';
 
 class userController {
   static async getAllRequests(req, res) {
+    const { userId } = req.body;
     try {
-      const queryText = 'SELECT * FROM requests';
-      const requests = await pool.query(queryText);
+      const queryText = 'SELECT * FROM requests WHERE userId=$1';
+      const value = [userId];
+      const requests = await pool.query(queryText, value);
       if (!requests.rows.length) return res.status(400).json('No Requests Found');
       return res.status(200).json(
         {
@@ -62,12 +64,12 @@ class userController {
 
   static async createRequest(req, res) {
     const {
-      title, description, category, status, itemType,
+      title, description, category, status, itemType, userId,
     } = req.body;
     if (!title) return res.status(404).json('Input all fields');
     try {
-      const queryText = 'INSERT INTO requests (title, description, category, status, created_at, itemType) VALUES($1,$2,$3,$4,NOW(),$5) RETURNING *';
-      const values = [title, description, category, status, itemType];
+      const queryText = 'INSERT INTO requests (title, description, category, status, created_at, itemType, userId) VALUES($1,$2,$3,$4,NOW(),$5,$6) RETURNING *';
+      const values = [title, description, category, status, itemType, userId];
       const newRequest = await pool.query(queryText, values);
       return res.status(201).json({
         message: 'Request Created',
