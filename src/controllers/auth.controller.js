@@ -35,7 +35,7 @@ class authController {
         const newUser = await pool.query(signUpUser, values);
 
         // Token Generation
-        jwt.sign({ email, password }, process.env.JWT_KEY, { expiresIn: '12h' }, (error, token) => {
+        jwt.sign({ email, password }, process.env.JWT_KEY, { expiresIn: '24h' }, (error, token) => {
           res.status(201).json({
             user: newUser.rows[0],
             token,
@@ -59,7 +59,7 @@ class authController {
       const matchedPassword = bcrypt.compareSync(password, user.rows[0].password);
 
       if (matchedPassword) {
-        jwt.sign({ email, password }, process.env.JWT_KEY, { expiresIn: '12h' }, (error, token) => {
+        jwt.sign({ email, password }, process.env.JWT_KEY, { expiresIn: '24h' }, (error, token) => {
           res.status(200).json({
             message: 'Login Successful',
             token,

@@ -10,6 +10,7 @@ dotenv.config();
 chai.use(chaiHttp);
 chai.should();
 
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRyZXFlQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoidHJlcTEyMyIsImlhdCI6MTU3NDMzMjM3NiwiZXhwIjoxNTc0Mzc1NTc2fQ.kopSmy5gBzPq4r6sL3xiO6sHl8lCOuqBej-FEY5mwU4';
 describe('DELETE /', () => {
   // it('should return 200 , when request has been sucessfully deleted', (done) => {
   //   chai.request(server).delete('/api/v1/users/requests/28').end((req, res) => {
@@ -22,7 +23,7 @@ describe('DELETE /', () => {
   // });
 
   it('should return 404 , when request has not been deleted', (done) => {
-    chai.request(server).delete('/api/v1/users/requess/5').end((req, res) => {
+    chai.request(server).delete('/api/v1/users/requess/5').set('Authorization', `bearer ${token}`).end((req, res) => {
       res.should.have.status(404);
       done();
     });
