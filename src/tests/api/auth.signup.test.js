@@ -32,7 +32,7 @@ describe('POST /Signup', () => {
       password: 'kpjkljl',
     }).end((req, res) => {
       res.should.have.status(400);
-      res.body.should.have.property('message').eql('username already exist');
+      res.body.should.have.property('message').eql('email already exists');
       done();
     });
   });

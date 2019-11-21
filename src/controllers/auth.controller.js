@@ -27,7 +27,7 @@ class authController {
 
       if (checkResult.rows[0]) {
         res.status(400).json({
-          message: 'username already exist',
+          message: 'email already exists',
         });
       } else {
         const signUpUser = 'INSERT INTO users(email, firstname, lastname, password) VALUES($1,$2,$3,$4) RETURNING *';
