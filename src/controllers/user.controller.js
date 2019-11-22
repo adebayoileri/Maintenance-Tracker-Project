@@ -64,9 +64,10 @@ class userController {
 
   static async createRequest(req, res) {
     const {
-      title, description, category, status, itemType, userId,
+      title, description, category, itemType, userId,
     } = req.body;
     if (!title) return res.status(404).json('Input all fields');
+    const status = 'pending';
     try {
       const queryText = 'INSERT INTO requests (title, description, category, status, created_at, itemType, userId) VALUES($1,$2,$3,$4,NOW(),$5,$6) RETURNING *';
       const values = [title, description, category, status, itemType, userId];
