@@ -21,7 +21,6 @@ describe('POST /', () => {
         itemType: 'Accespories',
         description: 'Burnt PORT',
         category: 'replacement',
-        status: 'resolved',
         userId: 4,
       }).set('Authorization', `bearer ${token}`)
       .end((req, res) => {
@@ -41,7 +40,6 @@ describe('POST /', () => {
         itemType: 'Accespories',
         description: 'Burnt PORT',
         category: 'replacement',
-        status: 'resolved',
         userId: 4,
       }).set('Authorization', 'bearer hubdshbhbhjvdshj')
       .end((req, res) => {
