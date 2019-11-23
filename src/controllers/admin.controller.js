@@ -21,7 +21,7 @@ class adminController {
       const queryText = 'SELECT * FROM requests WHERE requestId=$1';
       const value = [requestId];
       const request = await pool.query(queryText, value);
-      if (!request.rows.length) { return res.status(404).json('No request associated with this ID'); }
+      if (!request.rows.length) { return res.status(400).json('No request associated with this ID'); }
 
       const statusApprove = 'UPDATE requests SET status=$1 WHERE requestId=$2';
       const values = [status, requestId];
@@ -44,7 +44,7 @@ class adminController {
       const queryText = 'SELECT * FROM requests WHERE requestId=$1';
       const value = [requestId];
       const request = await pool.query(queryText, value);
-      if (!request.rows.length) { return res.status(404).json('No request associated with this ID'); }
+      if (!request.rows.length) { return res.status(400).json('No request associated with this ID'); }
 
       const statusDisapprove = 'UPDATE requests SET status=$1 WHERE requestId=$2';
       const values = [status, requestId];
@@ -65,7 +65,7 @@ class adminController {
       const queryText = 'SELECT * FROM requests WHERE requestId=$1';
       const value = [requestId];
       const request = await pool.query(queryText, value);
-      if (!request.rows.length) { return res.status(404).json('No request associated with this ID'); }
+      if (!request.rows.length) { return res.status(400).json('No request associated with this ID'); }
 
       const statusResolved = 'UPDATE requests SET status=$1 WHERE requestId=$2';
       const values = [status, requestId];

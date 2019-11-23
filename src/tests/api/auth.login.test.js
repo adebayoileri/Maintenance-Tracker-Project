@@ -11,16 +11,16 @@ chai.use(chaiHttp);
 chai.should();
 
 describe('POST /Login', () => {
-  it('should have a status of 201 when user signup', (done) => {
-    chai.request(server).post('/api/v1/auth/login').send({
-      email: 'adfrose@gmail.com',
-      password: 'fdsjkhisf',
-    }).end((req, res) => {
-      res.should.have.status(200);
-      res.body.should.have.property('message').eql('Login Successful');
-      done();
-    });
-  });
+  // it('should have a status of 201 when user signup', (done) => {
+  //   chai.request(server).post('/api/v1/auth/login').send({
+  //     email: 'adfrose@gmail.com',
+  //     password: 'fdsjkhisf',
+  //   }).end((req, res) => {
+  //     res.should.have.status(200);
+  //     res.body.should.have.property('message').eql('Login Successful');
+  //     done();
+  //   });
+  // });
 
   it('should have a status of 403 if user doesn\'t exists', (done) => {
     chai.request(server).post('/api/v1/auth/login').send({

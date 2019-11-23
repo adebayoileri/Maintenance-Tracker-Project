@@ -11,18 +11,18 @@ chai.use(chaiHttp);
 chai.should();
 
 describe('POST /Signup', () => {
-  // it('should have a status of 201 when user signup', (done) => {
-  //   chai.request(server).post('/api/v1/auth/signup').send({
-  //     firstname: 'ade',
-  //     lastname: 'ileri',
-  //     email: 'adeileri@gmail.com',
-  //     password: 'kpjkljl',
-  //   }).end((req, res) => {
-  //     res.should.have.status(201);
-  //     res.body.should.have.a('object');
-  //     done();
-  //   });
-  // });
+  it('should have a status of 201 when user signup', (done) => {
+    chai.request(server).post('/api/v1/auth/signup').send({
+      firstname: 'ade',
+      lastname: 'ileri',
+      email: 'adeileri@gmail.com',
+      password: 'kpjkljl',
+    }).end((req, res) => {
+      res.should.have.status(201);
+      res.body.should.have.a('object');
+      done();
+    });
+  });
 
   it('should have a status of 400 if email already exists', (done) => {
     chai.request(server).post('/api/v1/auth/signup').send({
