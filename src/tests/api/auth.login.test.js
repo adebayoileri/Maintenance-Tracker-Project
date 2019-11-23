@@ -40,7 +40,7 @@ describe('POST /Login', () => {
       password: 'fdsjkh7878f',
     }).end((req, res) => {
       res.should.have.status(403);
-      res.body.should.have.property('message').eql('Invalid password Pls try again');
+      res.body.should.have.property('message').eql('This email doesn\'t seem to exists on our server. Signup if you haven\'t');
       done();
     });
   });
