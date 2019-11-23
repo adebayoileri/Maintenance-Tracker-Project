@@ -8,6 +8,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+// eslint-disable-next-line no-constant-condition
 if (process.env.NODE_ENV = 'production') {
   // eslint-disable-next-line no-unused-vars
   const connectionString = process.env.DB_URL;
