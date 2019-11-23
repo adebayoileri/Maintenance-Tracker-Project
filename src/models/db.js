@@ -1,3 +1,4 @@
+/* eslint-disable no-cond-assign */
 /* eslint-disable linebreak-style */
 /* eslint-disable consistent-return */
 /* eslint-disable no-console */
@@ -7,7 +8,10 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-// const connectionString = process.env.DB_URL;
+if (process.env.NODE_ENV = 'production') {
+  // eslint-disable-next-line no-unused-vars
+  const connectionString = process.env.DB_URL;
+}
 
 const connectionString = {
   user: process.env.DB_USER,
