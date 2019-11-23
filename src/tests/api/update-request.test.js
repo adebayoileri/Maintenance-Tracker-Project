@@ -44,7 +44,7 @@ describe('UPDATE /', () => {
       })
       .set('Authorization', `bearer ${token}`)
       .end((req, res) => {
-        res.should.have.status(404);
+        res.should.have.status(401);
         done();
       });
   });
