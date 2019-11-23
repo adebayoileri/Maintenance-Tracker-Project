@@ -20,8 +20,7 @@ describe('GET ALL REQUESTS /', () => {
 
   it('should have a status 400 if request not found', () => {
     chai.request(server).put('/api/v1/admin/requests/').end((req, res) => {
-      res.should.have.status(400);
-      res.body.should.have.property('message').eql('No Requests Found');
+      res.should.have.status(404);
     });
   });
 });

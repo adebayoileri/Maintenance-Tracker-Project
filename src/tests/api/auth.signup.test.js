@@ -15,7 +15,7 @@ describe('POST /Signup', () => {
     chai.request(server).post('/api/v1/auth/signup').send({
       firstname: 'ade',
       lastname: 'ileri',
-      email: 'adeileri@gmail.com',
+      email: 'adeire@gmail.com',
       password: 'kpjkljl',
     }).end((req, res) => {
       res.should.have.status(201);
