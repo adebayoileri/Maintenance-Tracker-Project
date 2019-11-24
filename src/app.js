@@ -42,13 +42,13 @@ app.use('*', (req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
     'Access-Control-Allow-Headers',
-    'Origin,X-Requested-With,Content-Type,Accept,Authorization'
+    'Origin,X-Requested-With,Content-Type,Accept,Authorization',
   );
   if (req.method === 'OPTIONS') {
     res.header('Access-Control-Allow-Headers', 'PUT,DELETE,GET,PATCH,POST');
     return res.status(200).json({});
   }
-  next();
+  return next();
 });
 
 
@@ -59,7 +59,7 @@ app.all('*', (req, res) => res.status(404).json({
   message: 'Route unavailable on server.',
 }));
 
-//Server Host
+// Server Host
 app.listen(port, () => {
   console.log(`SERVER IS UP AND RUNNING ON PORT ${port}`);
 });
