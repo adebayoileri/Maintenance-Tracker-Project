@@ -37,6 +37,21 @@ app.use('/api/v1/admin/requests', AdminRoutes);
 //   );
 // });
 
+// CORS POLICY
+app.use('*', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin,X-Requested-With,Content-Type,Accept,Authorization'
+  );
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Headers', 'PUT,DELETE,GET,PATCH,POST');
+    return res.status(200).json({});
+  }
+  next();
+});
+
+
 // Invalid Routes
 app.all('*', (req, res) => res.status(404).json({
   status: 'error',

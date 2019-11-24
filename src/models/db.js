@@ -1,5 +1,4 @@
 /* eslint-disable linebreak-style */
-/* eslint-disable no-cond-assign */
 /* eslint-disable consistent-return */
 /* eslint-disable no-console */
 const pg = require('pg');
@@ -8,11 +7,8 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-// eslint-disable-next-line no-constant-condition
-if (process.env.NODE_ENV = 'production') {
-  // eslint-disable-next-line no-unused-vars
-  const connectionString = process.env.DB_URL;
-}
+// if (process.env.NODE_ENV = 'production') {
+// }
 
 const connectionString = {
   user: process.env.DB_USER,
