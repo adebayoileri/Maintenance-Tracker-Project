@@ -13,7 +13,7 @@ import AdminRoutes from './routes/adminRoutes';
 const app = express();
 const port = process.env.PORT || 3010;
 
-// Deployment
+// Render frontend
 const frontend = path.join(__dirname, '../public');
 app.use(express.static(frontend));
 
@@ -59,6 +59,7 @@ app.all('*', (req, res) => res.status(404).json({
   message: 'Route unavailable on server.',
 }));
 
+//Server Host
 app.listen(port, () => {
   console.log(`SERVER IS UP AND RUNNING ON PORT ${port}`);
 });
