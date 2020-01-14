@@ -7,20 +7,29 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-// if (process.env.NODE_ENV = 'production') {
+// if (process.env.NODE_ENV === 'production') {
+//   const connectionString = process.env.DB_URL;
 // }
 
-const connectionString = {
-  user: process.env.DB_USER,
-  port: process.env.DB_PORT,
-  host: process.env.DB_HOST,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-};
-// const connectionString = process.env.DB_URL;
+// const connectionString = {
+//   user: process.env.DB_USER,
+//   port: process.env.DB_PORT,
+//   host: process.env.DB_HOST,
+//   password: process.env.DB_PASSWORD,
+//   database: process.env.DB_DATABASE,
+// };
+const connectionString = process.env.DB_URL;
 const pool = new pg.Pool(connectionString);
 
-pool.on('connect', () => {
+pool.on('connect', (err) => {
+  if (err) {
+    return console.error('Couldn\'t connect to database');
+  }
+  pool.query('SELECT NOW() AS "theTime"', (result) => {
+    console.log(result.rows[0].theTime);
+    // >> output: 2018-08-23T14:02:57.117Z
+    pool.end();
+  });
 });
 
 const createRequestsTable = async () => {
