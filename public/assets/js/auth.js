@@ -5,21 +5,32 @@ const signUpForm = document.getElementById('signUpForm');
 const loginForm = document.getElementById('loginForm');
 
 if (signUpForm) {
-  signUpForm.addEventListener('submit', () => {
+  signUpForm.addEventListener('submit', async () => {
     const firstname = document.getElementById('firstname').value;
     const email = document.getElementById('email').value;
     const lastname = document.getElementById('lastname').value;
     const password = document.getElementById('password').value;
 
-    fetch(`${baseUrl}/signup`, {
+    const response = await fetch(`${baseUrl}/signup`, {
       method: 'POST',
       body: JSON.stringify({
         firstname, lastname, email, password,
       }),
       headers: { 'Content-Type': 'application/json' },
-    }).then((res) => console.log(res.json()))
-      .then((data) => console.log(data))
+    }).then((res) => res.json())
       .catch((err) => console.log(err));
+    // save token in the local storage to be used for authorization
+    localStorage.setItem('token', response.token);
+
+    // save userid in the localstorage
+    localStorage.setItem('userid', response.user.userId);
+
+    // save username in the localstorage
+    localStorage.setItem('username', response.user.firstname);
+    if (response.message === 'Success') {
+      // user dashboard link
+      window.location = '../Login.html';
+    }
   });
 }
 

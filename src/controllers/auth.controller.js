@@ -39,6 +39,7 @@ class authController {
           res.status(201).json({
             user: newUser.rows[0],
             token,
+            message: 'Success',
           });
         });
       }
