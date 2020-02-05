@@ -11,16 +11,19 @@
     <link rel="shortcut icon" href="#" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/log.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Log In</title>
+    <title>Trackman | Log In</title>
 </head>
 <body>
     <header>
         <div class="logo"><a href="index.html">Trackman</a></div>
     </header>
+    <div class="" id="display">
+    <p id="alert"></p>
+    </div>
     <div class="log">
         <h1>Login</h1>
         <p>Welcome Back. We only need your email and password, and you'll be on your way</p>
-    <form action="/api/v1/auth/login" id="loginForm" method="post">
+    <form action="/api/v1/auth/login" id="loginForm" method="POST">
         <label for="">Email:</label>
         <input type="email"  id="email" required=''/>
         <label for="">Password:</label>
@@ -32,4 +35,5 @@
     <h4 class="reset">Forgot Your Password ?  <a href="#">Reset Password</a> </h4>
 </body>
 <script src="./assets/js/auth.js"></script>
+<script src="./assets/js/script.js"></script>
 </html>

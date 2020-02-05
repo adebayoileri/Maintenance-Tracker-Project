@@ -182,6 +182,26 @@ header nav ul li a:hover{
     width: 100px;
 }
 
+/*  Alert */
+
+#display {
+    width: 100%;
+    text-align: center;
+    padding: .8em;
+    font-size: 1em;
+    visibility: hidden;
+    color: #f6f6f6;
+    z-index: 1;
+    position: fixed;
+    top: 1em;
+  }
+  
+  #display.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+  }
+
 footer{
     height: 350px auto;
     width: 100%;
@@ -263,3 +283,24 @@ footer .footer-a .foot-info p{
         grid-template-columns: 1fr;
     }
 }
+
+/* Animations */
+@-webkit-keyframes fadein {
+    from {top: 0; opacity: 0;} 
+    to {top: 4em; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {top: 0; opacity: 0;} 
+    to {top: 4em; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {top: 0; opacity: 0;} 
+    to {top: 4em; opacity: 1;}
+  }
+  
+  @keyframes fadeout {
+    from {top: 0; opacity: 0;} 
+    to {top: 4em; opacity: 1;}
+  }

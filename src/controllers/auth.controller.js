@@ -38,6 +38,7 @@ class authController {
         jwt.sign({ email, password }, process.env.JWT_KEY, { expiresIn: '24h' }, (error, token) => {
           res.status(201).json({
             user: newUser.rows[0],
+            userId: newUser.rows[0].userid,
             token,
             message: 'Success',
           });
