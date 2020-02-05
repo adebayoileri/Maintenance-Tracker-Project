@@ -15,6 +15,7 @@ hr{
 a{
     text-decoration: none;
     color: white;
+    cursor: pointer;
 }
 i,p,h1,h2,h3,h4,h5,h6{
     color: white;
@@ -43,6 +44,9 @@ i,p,h1,h2,h3,h4,h5,h6{
   }
 /* #2082e4  #39f*/
 /* font-family: 'Montserrat', sans-serif; */
+input[type="submit"]{
+    cursor: pointer;
+}
 header{
     position: fixed;
     top: 0;
