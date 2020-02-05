@@ -15,11 +15,11 @@ class authController {
       const value = [email];
       const checkResult = await pool.query(userExistsCheck, value);
 
-      if (!firstname || !lastname || !password) {
-        return res.status(400).json({
-          message: 'Input all required fields',
-        });
-      }
+      // if (!firstname || !lastname || !password) {
+      //   return res.status(400).json({
+      //     message: 'Input all required fields',
+      //   });
+      // }
 
       // Password Hashing Process
       const salt = await bcrypt.genSalt(10);
