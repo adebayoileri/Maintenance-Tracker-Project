@@ -34,11 +34,11 @@ if (!token) {
 // };
 
 
+// Logout users from the appplication
 logOut.addEventListener('click', (e) => {
   e.preventDefault();
   localStorage.setItem('token', '');
   localStorage.setItem('userid', '');
-  localStorage.setItem('name', '');
   localStorage.setItem('username', '');
   window.location = '../login.html';
 });
