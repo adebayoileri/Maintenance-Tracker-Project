@@ -11,14 +11,13 @@ class userController {
       const requests = await pool.query(queryText, value);
       if (!requests.rows.length) {
         res.status(400).json({ message: 'No Requests Found' });
-      } else {
-        res.status(200).json(
-          {
-            message: 'GET request successful',
-            requests: requests.rows,
-          },
-        );
       }
+      return res.status(200).json(
+        {
+          message: 'GET request successful',
+          requests: requests.rows,
+        },
+      );
     } catch (error) {
       return error;
     }
