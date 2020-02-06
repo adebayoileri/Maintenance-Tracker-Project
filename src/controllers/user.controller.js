@@ -9,13 +9,16 @@ class userController {
       const queryText = 'SELECT * FROM requests WHERE userId=$1';
       const value = [userId];
       const requests = await pool.query(queryText, value);
-      if (!requests.rows.length) return res.status(400).json('No Requests Found');
-      return res.status(200).json(
-        {
-          message: 'GET request successful',
-          requests: requests.rows,
-        },
-      );
+      if (!requests.rows.length) {
+        res.status(400).json({ message: 'No Requests Found' });
+      } else {
+        res.status(200).json(
+          {
+            message: 'GET request successful',
+            requests: requests.rows,
+          },
+        );
+      }
     } catch (error) {
       return error;
     }
