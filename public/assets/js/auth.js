@@ -56,10 +56,17 @@ if (loginForm) {
       .then((response) => {
         if (response.message === 'Login Successful') {
           window.localStorage.token = response.token;
+
+          // save userid in the localstorage
+          window.localStorage.userid = response.userId;
+
+          // save username in the localstorage
+          window.localStorage.username = response.userData.firstname;
+
           displayAlert(`Welcome ${response.userData.firstname}, your signup was Successful`, 2);
           setTimeout(() => {
             window.location = '../dashboard.html';
-          }, 10);
+          }, 1000);
         } else {
           displayAlert(response.message, 3);
         }

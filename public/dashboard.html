@@ -10,69 +10,146 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/sb-admin-2.min.css">
+    <link rel="stylesheet" href="./assets/css/sb-admin-2.css">
     <title>Dashboard | User Account</title>
 </head>
 <body>
 <!-- <header> -->
-    <div class="logo">Trackman</div>
-    <span class="menu" id='menu'><i class="fa fa-bars"></i></span>
+    <!-- <div class="logo">Trackman</div>
+    <span class="menu" id='menu'><i class="fa fa-bars"></i></span> -->
 <!-- </header> -->
-<!-- Side Nav  -->
-<div class="side-nav" id="side-nav">
-    <h3>Trackman</h3>
-    <h5 class="ch-green">UserId: 47437dghcewtyeccyu45cfi</h5>
-    <ul>
-      <li id="user-sync"><h5><i class="icon ion-md-sync"></i> All requests</h5></li>
-      <li id="user-approve"><h5><i class="icon ion-md-checkmark"></i> Approved requests</h5></li>
-      <li id="user-disapprove"><h5><i class="icon ion-md-close"></i> Dispproved requests</h5></li>
-      <li id="user-pending"><h5><i class="icon ion-md-infinite"></i> Pending requests</h5></li>
-      <li id="user-resolve"><h5><i class="icon ion-md-done-all"></i> Resolved requests</h5></li>
+
+   <!-- Page Wrapper -->
+   <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fa fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Trackman </div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">
+          <i class="fa fa-fw fa-tachometer-alt"></i>
+          <span>Home</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
     </ul>
-    <button class="btn-round" id="btn-add-request"> Create Request</button>
-    <ul>
-      <li><h5><i class="icon ion-md-person"></i> My Profile</h5></li>
-      <li><h5><i class="icon ion-md-create"></i> Update Profile</h5></li>
-      <li><h5><i class="icon ion-md-key"></i> Change Password</h5></li>
-    </ul>
-    <ul></ul>
-  </div>
-    <div class="content">
-        <div class="col-9">
-          <h2 class="db-display">Dashboard</h2>
-          <hr>
-          <div class="ch-row ch-hide" id="user-requests"></div>
-        <div class="ch-row ch-hide" id="user-request-preview">
-          <div class="col-12">
-            <h3 class="ch-display" id="buttons">
-            </h3>
-            <p class="ch-display">
-              <label for="title" class="ch-label">Title</label>
-            </p>
-            <p id="displayTitle" class="ch-display">
-              Lorem impsum dolet et sim, elet dar tar
-            </p>
-            <p class="ch-display">
-              <label for="type" class="ch-label">Type</label>
-            </p>
-            <p id="displayType" class="ch-display">Repair</p>
-            <p class="ch-display">
-              <label for="description" class="ch-label">Description</label>
-            </p>
-            <p id="displayDescription" class="ch-display">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas at architecto molestiae numquam, laborum possimus
-              quam odit nam nisi velit consequatur cumque expedita.</p>
-            <p class="ch-display">
-              <label for="status" class="ch-label">Status</label>
-            </p>
-            <p id="displayStatus" class="ch-display"></p>
-            <p class="ch-display">
-              <label for="date" class="ch-label">Date</label>
-            </p>
-            <p id="displayDate" class="ch-display">22/03/2018 01:02pm</p>
-            <button id="getAllRequests">Get All requests</button>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Dashboard</h1>
+          <p class="mb-4">Welcome back :)</a>.</p>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">All requests</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th>Category</th>
+                      <th>Item type</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Bad Tyres</td>
+                      <td>The technician bought bad tyres</td>
+                      <td>Replacement</td>
+                      <td>Auto</td>
+                      <td>2012/03/29</td>
+                      <td>pending</td>
+                      <td> <a class="btn btn-success" role="button" href="">Edit</a> <a class="btn btn-danger" role="button" href="">Delete</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Trackman 2020</span>
           </div>
         </div>
-        </div>
+      </footer>
+      <!-- End of Footer -->
+
     </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
     </body>
     <script src="assets/js/user-dashboard.js"></script>
+    <script src="assets/js/sb-admin-2.js"></script>
+    <script src="assets/js/sb-admin-2.min.js"></script>
 </html>

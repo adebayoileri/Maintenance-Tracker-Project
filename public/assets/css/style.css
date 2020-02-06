@@ -193,7 +193,7 @@ header nav ul li a:hover{
     color: #f6f6f6;
     z-index: 1;
     position: fixed;
-    top: 1em;
+    top: 3em;
   }
   
   #display.show {
