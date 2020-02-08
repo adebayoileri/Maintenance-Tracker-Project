@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -21,13 +23,11 @@ var _userRoutes = _interopRequireDefault(require("./routes/userRoutes"));
 
 var _adminRoutes = _interopRequireDefault(require("./routes/adminRoutes"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
 /* eslint-disable linebreak-style */
 
 /* eslint-disable no-console */
 var app = (0, _express["default"])();
-var port = process.env.PORT || 3010; // Deployment
+var port = process.env.PORT || 3010; // Render frontend
 
 var frontend = _path["default"].join(__dirname, '../public');
 
@@ -42,12 +42,26 @@ app.use(_bodyParser["default"].json());
 app.use(_express["default"]["static"]('public'));
 app.use('/api/v1/auth', _authRoutes["default"]);
 app.use('/api/v1/users/requests', _userRoutes["default"]);
-app.use('/api/v1/admin', _adminRoutes["default"]); // Test good route
+app.use('/api/v1/admin/requests', _adminRoutes["default"]); // Test good route
+// app.get('/', (req, res) => {
+//   res.status(200).json(
+//     {
+//       message: 'welcome to the maintenance tracker app api/v1',
+//     },
+//   );
+// });
+// CORS POLICY
 
-app.get('/', function (req, res) {
-  res.json({
-    message: 'welcome to the maintenance tracker app api/v1'
-  });
+app.use('*', function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,Accept,Authorization');
+
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Headers', 'PUT,DELETE,GET,PATCH,POST');
+    return res.status(200).json({});
+  }
+
+  return next();
 }); // Invalid Routes
 
 app.all('*', function (req, res) {
@@ -56,7 +70,8 @@ app.all('*', function (req, res) {
     code: 404,
     message: 'Route unavailable on server.'
   });
-});
+}); // Server Host
+
 app.listen(port, function () {
   console.log("SERVER IS UP AND RUNNING ON PORT ".concat(port));
 });

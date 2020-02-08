@@ -17,27 +17,27 @@
     <header>
         <div class="logo"><a href="index.html">Trackman</a></div>
     </header>
+    <div class="" id="display">
+        <p id="alert"></p>
+    </div>
    <div class="sign-1">
         <h1>Sign Up</h1>
         <p></p>
-       <form action="" method="post" action="">
+       <form action="/api/v1/auth/signup" id="signUpForm" method="POST">
        <label for="">First name:</label>
-      <input type="text" name="" id="" placeholder='First Name' required=''/>
+      <input type="text" id="firstname" placeholder='First Name' required=''/>
       <label for="">Last name:</label>
-      <input type="text" name="" id="" placeholder="Last name" required=''/>
+      <input type="text" id="lastname" placeholder="Last name" required=''/>
       <label for="">Email:</label>
-      <input type="email" name="" id="" placeholder="Email">
+      <input type="email" id="email" placeholder="Email">
       <label for="">Create password:</label>
-      <input type="password" id="pass"  name="" placeholder="Create password"  required=''/>
-      <label for="">Confirm Password:</label>
-      <input type="password" name="" id="" placeholder="Confirm password" required=''/>
-        <label for="">Show password</label> 
-        <input  id='check'type="checkbox" name="">
-
+      <input type="password" id="password"  placeholder="Create password"  required=''/>
       <input type="submit" value="Sign Up" required=''/>
       </form>
     </div>
 </body>
+<script src="./assets/js/auth.js"></script>
+<script src="./assets/js/script.js"></script>
 <script>
     const check =document.getElementById('check')
          check.addEventListener('click',function change()

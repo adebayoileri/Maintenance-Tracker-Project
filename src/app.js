@@ -10,11 +10,10 @@ import AuthRoutes from './routes/authRoutes';
 import UserRoutes from './routes/userRoutes';
 import AdminRoutes from './routes/adminRoutes';
 
-
 const app = express();
 const port = process.env.PORT || 3010;
 
-// Deployment
+// Render frontend
 const frontend = path.join(__dirname, '../public');
 app.use(express.static(frontend));
 
@@ -38,6 +37,21 @@ app.use('/api/v1/admin/requests', AdminRoutes);
 //   );
 // });
 
+// CORS POLICY
+app.use('*', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin,X-Requested-With,Content-Type,Accept,Authorization',
+  );
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Headers', 'PUT,DELETE,GET,PATCH,POST');
+    return res.status(200).json({});
+  }
+  return next();
+});
+
+
 // Invalid Routes
 app.all('*', (req, res) => res.status(404).json({
   status: 'error',
@@ -45,6 +59,7 @@ app.all('*', (req, res) => res.status(404).json({
   message: 'Route unavailable on server.',
 }));
 
+// Server Host
 app.listen(port, () => {
   console.log(`SERVER IS UP AND RUNNING ON PORT ${port}`);
 });
