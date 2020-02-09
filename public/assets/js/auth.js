@@ -24,7 +24,7 @@ if (signUpForm) {
           displayAlert('Signup Successful', 2);
           // user dashboard link
           setTimeout(() => {
-            window.location = '../Login.html';
+            window.location = '../LogIn.html';
           }, 10);
           // save token in the local storage to be used for authorization
           localStorage.setItem('token', response.token);

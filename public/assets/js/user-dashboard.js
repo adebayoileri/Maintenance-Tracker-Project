@@ -40,5 +40,5 @@ logOut.addEventListener('click', (e) => {
   localStorage.setItem('token', '');
   localStorage.setItem('userid', '');
   localStorage.setItem('username', '');
-  window.location = '../login.html';
+  window.location = '../LogIn.html';
 });
