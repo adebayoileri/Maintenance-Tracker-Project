@@ -18,8 +18,10 @@ dotenv.config();
 //   password: process.env.DB_PASSWORD,
 //   database: process.env.DB_DATABASE,
 // };
-const connectionString = process.env.DB_URL;
-const pool = new pg.Pool(connectionString);
+const pool = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
 
 pool.on('connect', (err) => {
   if (err) {
