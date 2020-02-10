@@ -18,9 +18,7 @@ const connectionString = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
 };
-const pool = new pg.Pool({
-  connectionString,
-});
+const pool = new pg.Pool(connectionString);
 
 pool.on('connect', (err) => {
   if (err) {

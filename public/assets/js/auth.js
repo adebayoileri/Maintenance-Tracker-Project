@@ -66,7 +66,7 @@ if (loginForm) {
 
           displayAlert(`Welcome ${response.userData.firstname}, your signup was Successful`, 2);
           setTimeout(() => {
-            window.location = '../dashboard.html';
+            window.location = '/dashboard';
           }, 1000);
         } else {
           displayAlert(response.message, 3);

@@ -7,7 +7,7 @@ const logOut = document.getElementById('logout');
 // const userId = localStorage.getItem('userid');
 // const token = `Bearer ${localStorage.token}`;
 if (!token) {
-  window.location = '../Sign.html';
+  window.location = '../LogIn.html';
 }
 
 // getAllRequestsBtn.addEventListener('click', () => {
