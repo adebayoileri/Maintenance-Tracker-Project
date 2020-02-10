@@ -27,6 +27,10 @@ app.use(express.static('public'));
 app.use('/api/v1/auth', AuthRoutes);
 app.use('/api/v1/users/requests', UserRoutes);
 app.use('/api/v1/admin/requests', AdminRoutes);
+// Get User dashboard
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'dashboard.html'));
+});
 
 // Test good route
 // app.get('/', (req, res) => {

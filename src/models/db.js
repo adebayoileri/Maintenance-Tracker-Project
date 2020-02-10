@@ -11,16 +11,15 @@ dotenv.config();
 //   const connectionString = process.env.DB_URL;
 // }
 
-// const connectionString = {
-//   user: process.env.DB_USER,
-//   port: process.env.DB_PORT,
-//   host: process.env.DB_HOST,
-//   password: process.env.DB_PASSWORD,
-//   database: process.env.DB_DATABASE,
-// };
+const connectionString = {
+  user: process.env.DB_USER,
+  port: process.env.DB_PORT,
+  host: process.env.DB_HOST,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+};
 const pool = new pg.Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
+  connectionString,
 });
 
 pool.on('connect', (err) => {

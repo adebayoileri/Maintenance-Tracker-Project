@@ -22,4 +22,5 @@ router.post('/', checkAuth, userController.createRequest);
 // Delete a request
 router.delete('/:requestId', checkAuth, userController.deleteRequest);
 
+
 export default router;
