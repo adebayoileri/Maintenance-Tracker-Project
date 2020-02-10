@@ -26,7 +26,7 @@ describe('/GET REQUESTS', () => {
 
   it('should have return 404 when not requests found', () => {
     chai.request(server).get('/api/v1/users/requess').set('Authorization', `bearer ${token}`).end((req, res) => {
-      res.should.have.status(401);
+      res.should.have.status(404);
     });
   });
 });
