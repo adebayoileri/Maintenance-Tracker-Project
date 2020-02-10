@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/sb-admin-2.min.css">
-    <link rel="stylesheet" href="./assets/css/sb-admin-2.css">
     <title>Dashboard | User Account</title>
 </head>
 <body>
@@ -90,7 +89,7 @@
                       <th>Actions</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="requestList">
                     <tr>
                       <td>Bad Tyres</td>
                       <td>The technician bought bad tyres</td>
@@ -102,6 +101,7 @@
                     </tr>
                   </tbody>
                 </table>
+                <button id="getAllRequests" class="btn btn-primary">Get all Requests</button>
               </div>
             </div>
           </div>

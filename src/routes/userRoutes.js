@@ -7,7 +7,7 @@ import checkAuth from '../middlewares/checkAuth';
 
 const router = express.Router();
 
-router.get('/', checkAuth, userController.getAllRequests);
+router.get('/:userId', userController.getAllRequests);
 
 router.get('/:requestId', checkAuth, userController.getSingleRequest);
 

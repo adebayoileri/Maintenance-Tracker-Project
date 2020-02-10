@@ -4,7 +4,7 @@ import pool from '../models/db';
 
 class userController {
   static async getAllRequests(req, res) {
-    const { userId } = req.body;
+    const { userId } = req.params;
     try {
       const queryText = 'SELECT * FROM requests WHERE userId=$1';
       const value = [userId];

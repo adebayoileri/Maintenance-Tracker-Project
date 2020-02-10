@@ -24,7 +24,7 @@ describe('/GET SINGLE REQUEST', () => {
   // });
   it('should have return 404 if no requests found', () => {
     chai.request(server).get('/api/v1/users/requests/89').set('Authorization', `bearer ${token}`).end((req, res) => {
-      res.should.have.status(401);
+      res.should.have.status(400);
     });
   });
 });
