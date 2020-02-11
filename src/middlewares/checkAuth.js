@@ -9,10 +9,10 @@ const checkAuth = (req, res, next) => {
     const decoded = jwt.verify(token, secret);
     req.userData = decoded;
     next();
-  } catch (error) {
+  } catch (err) {
     res.status(401).json({
       message: 'Auth failed',
-      error,
+      err,
     });
   }
 };

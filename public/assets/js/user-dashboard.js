@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-console */
-// const getAllRequestsBtn = document.getElementById('getAllRequests');
+// const deleteRequestBtn = document.getElementById('deleteBtn');
 const token = localStorage.getItem('token');
 const userId = localStorage.getItem('userid');
 const logOut = document.getElementById('logout');
@@ -32,7 +32,7 @@ const getAllRequests = async () => {
         <td>${request.itemtype}</td>
         <td>${date}</td>
         <td>${request.status}</td>
-        <td> <a class="btn btn-success" role="button" href="">Edit</a> <a class="btn btn-danger" role="button" href="">Delete</a></td>
+        <td> <a class="btn btn-success" role="button" href="">Edit</a> <a class="btn btn-danger" onclick=localStorage.setItem('id',${request.requestid} role="button" href="">Delete</a></td>
       </tr>`;
       });
     }).catch((err) => err);
@@ -68,6 +68,11 @@ getAllRequests();
 //       displayAlert('Error connecting to the network, please check your Internet connection and try again');
 //     });
 // });
+
+// Delete a particular request
+// deleteRequestBtn.addEventListener('click', async () => {
+//   await fetch(baseUrl)
+// })
 
 // Logout users from the appplication
 logOut.addEventListener('click', (e) => {
