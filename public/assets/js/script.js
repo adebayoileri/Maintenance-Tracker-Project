@@ -26,3 +26,13 @@ const displayAlert = (message, type = 1) => {
     document.getElementById('display').className = '';
   }, 4000);
 };
+
+const toggleModal = (id) => {
+  if (document.getElementById('modal').style.display === 'block') {
+    document.getElementById('modal').style.display = 'none';
+    document.getElementById(id).style.display = 'none';
+  } else {
+    document.getElementById('modal').style.display = 'block';
+    document.getElementById(id).style.display = 'block';
+  }
+};

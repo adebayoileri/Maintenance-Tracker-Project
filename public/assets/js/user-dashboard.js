@@ -8,6 +8,11 @@ const baseUrl = 'http://localhost:3010/api/v1/users/requests';
 if (!token) {
   window.location = '../LogIn.html';
 }
+const createRequestBtn = document.getElementById('create_request');
+createRequestBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  toggleModal('add-request');
+});
 // Get all requests for user on page load
 const getAllRequests = async () => {
   await fetch(`${baseUrl}/${userId}`, {
