@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./assets/css/dashboard.css">
+    <meta name="theme-color" content="#2082e4"/>
+    <link rel="shortcut icon" href="https://previews.123rf.com/images/magurok/magurok1310/magurok131000053/22712554-vector-cog-icon.jpg" type="image/x-icon">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/sb-admin-2.min.css">
+    <title>Dashboard | User Account</title>
+</head>
+<body>
+<!-- <header> -->
+    <!-- <div class="logo">Trackman</div>
+    <span class="menu" id='menu'><i class="fa fa-bars"></i></span> -->
+<!-- </header> -->
+<!-- <div class="" id="display">
+  <p id="alert"></p>
+</div> -->
+
+   <!-- Page Wrapper -->
+   <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fa fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Trackman</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard">
+          <i class="fa fa-tachometer"></i>
+          <span>Home</span></a>
+      </li>
+      <li class="nav-item">
+        <a  href="/create" class="nav-link" id="create_request"> <i class="fa fa-plus"></i> <span>Create Request</span></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" id="logout"> <i class="fa fa-wrench"></i> <span>Logout</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Dashboard</h1>
+          <p class="mb-4">Welcome back :)</a>.</p>
+
+          <form action="/api/v1/users/requests" id="createRequest" method="POST">
+            <div class="form-group">
+              <label for="">Request Title</label>
+              <input class="form-control" type="text" name="" id="title" required>
+            </div>
+            <div class="form-group">
+              <label for="">Request  Description</label>
+              <textarea class="form-control" name="" id="description" cols="15" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="">Item Type</label>
+             <select class="form-control" name="" id="type" required>
+               <option value="Electronics">Electronics</option>
+               <option value="Accesories">Accesories</option>
+               <option value="Hardware">Hardware</option>
+             </select>
+            </div>
+            <div class="form-group">
+              <label for="">Category</label>
+              <select class="form-control" name="" id="category" required>
+                <option value="Repair">Repair</option>
+                <option value="Replacement">Replacement</option>
+              </select>
+            </div>
+            <input value="Submit" type="submit" class="btn btn-success form-control">
+          </form>
+         
+        </div> 
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Trackman 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+  </a>
+
+    </body>
+    <script src="assets/js/user-dashboard.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/sb-admin-2.js"></script>
+    <script src="assets/js/sb-admin-2.min.js"></script>
+</html>

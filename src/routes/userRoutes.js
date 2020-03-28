@@ -3,16 +3,16 @@
 
 import express from 'express';
 import userController from '../controllers/user.controller';
-import checkAuth from '../middlewares/checkAuth';
+// import checkAuth from '../middlewares/checkAuth';
 
 const router = express.Router();
 
 router.get('/:userId', userController.getAllRequests);
 
-router.get('/:requestId', checkAuth, userController.getSingleRequest);
+router.get('/:requestId', userController.getSingleRequest);
 
 // Modify Request
-router.put('/:requestId', checkAuth, userController.updateRequest);
+router.put('/:requestId', userController.updateRequest);
 
 
 // Add Request

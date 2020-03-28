@@ -41,6 +41,17 @@ app.get('/home', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'admin.html'));
 });
 
+/**
+ *Edit the request with specified id
+*
+* @params {Object} requestId
+*
+*/
+
+app.get('/request/edit/:requestId', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'edit.html'));
+});
+
 // Test good route
 // app.get('/', (req, res) => {
 //   res.status(200).json(
