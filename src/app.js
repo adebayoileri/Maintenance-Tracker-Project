@@ -32,6 +32,15 @@ app.get('/dashboard', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'dashboard.html'));
 });
 
+app.get('/create', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'create.html'));
+});
+
+// Get Admin dashboard
+app.get('/home', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'admin.html'));
+});
+
 // Test good route
 // app.get('/', (req, res) => {
 //   res.status(200).json(

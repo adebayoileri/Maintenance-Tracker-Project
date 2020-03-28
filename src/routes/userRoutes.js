@@ -7,7 +7,7 @@ import checkAuth from '../middlewares/checkAuth';
 
 const router = express.Router();
 
-router.get('/:userId', checkAuth, userController.getAllRequests);
+router.get('/:userId', userController.getAllRequests);
 
 router.get('/:requestId', checkAuth, userController.getSingleRequest);
 
@@ -16,11 +16,11 @@ router.put('/:requestId', checkAuth, userController.updateRequest);
 
 
 // Add Request
-router.post('/', checkAuth, userController.createRequest);
+router.post('/', userController.createRequest);
 
 
 // Delete a request
-router.delete('/:requestId', checkAuth, userController.deleteRequest);
+router.delete('/:requestId', userController.deleteRequest);
 
 
 export default router;

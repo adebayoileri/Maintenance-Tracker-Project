@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-shadow */
 /* eslint-disable no-console */
-// const deleteRequestBtn = document.getElementById('deleteBtn');
+const deleteRequestBtn = document.getElementById('deleteBtn');
 const token = localStorage.getItem('token');
 const userId = localStorage.getItem('userid');
 const logOut = document.getElementById('logout');
@@ -8,11 +9,11 @@ const baseUrl = 'http://localhost:3010/api/v1/users/requests';
 if (!token) {
   window.location = '../LogIn.html';
 }
-const createRequestBtn = document.getElementById('create_request');
-createRequestBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  toggleModal('add-request');
-});
+const createRequestForm = document.getElementById('createRequest');
+// createRequestBtn.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   toggleModal('add-request');
+// });
 // Get all requests for user on page load
 const getAllRequests = async () => {
   await fetch(`${baseUrl}/${userId}`, {
@@ -37,7 +38,7 @@ const getAllRequests = async () => {
         <td>${request.itemtype}</td>
         <td>${date}</td>
         <td>${request.status}</td>
-        <td> <a class="btn btn-success" role="button" href="">Edit</a> <a class="btn btn-danger" onclick=localStorage.setItem('id',${request.requestid} role="button" href="">Delete</a></td>
+        <td> <a class="btn btn-success" role="button" id="editBtn" href="">Edit</a> <a class="btn btn-danger" onclick="deleteRequest(${request.requestid})" role="button" href="#">Delete</a></td>
       </tr>`;
       });
     }).catch((err) => err);
@@ -50,34 +51,72 @@ getAllRequests();
 *
 * @param {object} submitEvent - The submitEvent
 */
-// createRequestForm.addEventListener('submit', (submitEvent) => {
-//   submitEvent.preventDefault();
-//   const title = document.getElementById('title').value;
-//   const type = document.getElementById('type').value;
-//   const description = document.getElementById('description').value;
+if (createRequestForm) {
+  createRequestForm.addEventListener('submit', async (submitEvent) => {
+    submitEvent.preventDefault();
+    const title = document.getElementById('title').value;
+    const itemType = document.getElementById('type').value;
+    const description = document.getElementById('description').value;
+    const category = document.getElementById('category').value;
 
-//   fetch(`${baseUrl}/users/requests`, {
-//     method: 'POST',
-//     body: JSON.stringify({ title, type, description }),
-//     headers: { 'Content-Type': 'application/json', Authorization: token },
-//   })
-//     .then((response) => response.json())
-//     .then((response) => {
-//       if (response.code === 201) {
-//         displayAlert(response.message);
-//       } else {
-//         displayAlert(response.message);
-//       }
-//     }).catch(() => {
-// eslint-disable-next-line max-len
-//       displayAlert('Error connecting to the network, please check your Internet connection and try again');
-//     });
-// });
+    await fetch(`${baseUrl}`, {
+      method: 'POST',
+      body: JSON.stringify(
+        {
+          title, itemType, description, category, userId,
+        },
+      ),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then((response) => console.log(response.json()))
+      .then((response) => {
+        if (response.code === 201) {
+          displayAlert(response.message);
+          window.location = '/dashboard';
+        } else {
+          displayAlert(response.message);
+        }
+      }).catch(() => {
+        displayAlert('Error connecting to the network, please check your Internet connection and try again');
+      });
+  });
+}
 
 // Delete a particular request
-// deleteRequestBtn.addEventListener('click', async () => {
-//   await fetch(baseUrl)
-// })
+// const requestId = localStorage.getItem('id');
+const deleteRequest = async (requestId) => {
+  await fetch(`${baseUrl}/${requestId}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    cache: 'reload',
+  }).then((response) => response.json())
+    .then((response) => {
+      if (response.code === 200) {
+        displayAlert(response.message);
+      } else {
+        displayAlert('Couldn\'t Delete Request');
+      }
+    }).catch(() => {
+      displayAlert('Error connecting to the network, please check your Internet connection and try again');
+    });
+};
+
+// const deleteRequest = (requestId) => {
+//   fetch(`${baseUrl}/users/requests/${requestId}`, {
+//     method: 'DELETE',
+//     headers: { 'Content-Type': 'application/json', Authorization: token },
+//     cache: 'reload',
+//   }).then(response => response.json()).then((response) => {
+//     if (response.code === 200) {
+//       displayAlert(response.message);
+//       getRequests();
+//     } else {
+//       displayAlert('Could not delete request');
+//     }
+//   }).catch(() => {
+//     displayAlert('Error connecting to the network, please check your Internet connection and try again');
+//   });
+// };
 
 // Logout users from the appplication
 logOut.addEventListener('click', (e) => {

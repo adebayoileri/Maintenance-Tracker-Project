@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 const secret = process.env.JWT_KEY;
 const checkAuth = (req, res, next) => {
   try {
-    const token = req.headers.authorization.split(' ')[1] || req.body.token || localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     const decoded = jwt.verify(token, secret);
     req.userData = decoded;
     next();
