@@ -3,23 +3,24 @@
 
 import express from 'express';
 import userController from '../controllers/user.controller';
-import checkAuth from '../middlewares/checkAuth';
+// import checkAuth from '../middlewares/checkAuth';
 
 const router = express.Router();
 
-router.get('/', checkAuth, userController.getAllRequests);
+router.get('/:userId', userController.getAllRequests);
 
-router.get('/:requestId', checkAuth, userController.getSingleRequest);
+router.get('/:requestId', userController.getSingleRequest);
 
 // Modify Request
-router.put('/:requestId', checkAuth, userController.updateRequest);
+router.put('/:requestId', userController.updateRequest);
 
 
 // Add Request
-router.post('/', checkAuth, userController.createRequest);
+router.post('/', userController.createRequest);
 
 
 // Delete a request
-router.delete('/:requestId', checkAuth, userController.deleteRequest);
+router.delete('/:requestId', userController.deleteRequest);
+
 
 export default router;

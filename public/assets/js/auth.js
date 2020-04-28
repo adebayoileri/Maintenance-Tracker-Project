@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable no-console */
 const baseUrl = 'https://trackman.herokuapp.com/api/v1/auth';
+// const baseUrl = 'http://localhost:3010/api/v1/auth';
 const signUpForm = document.getElementById('signUpForm');
 const loginForm = document.getElementById('loginForm');
 
@@ -65,7 +66,7 @@ if (loginForm) {
 
           displayAlert(`Welcome ${response.userData.firstname}, your signup was Successful`, 2);
           setTimeout(() => {
-            window.location = '../dashboard.html';
+            window.location = '/dashboard';
           }, 1000);
         } else {
           displayAlert(response.message, 3);

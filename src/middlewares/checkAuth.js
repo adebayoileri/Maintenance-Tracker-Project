@@ -5,14 +5,14 @@ import jwt from 'jsonwebtoken';
 const secret = process.env.JWT_KEY;
 const checkAuth = (req, res, next) => {
   try {
-    const token = req.headers.authorization.split(' ')[1] || req.body.token;
+    const token = localStorage.getItem('token');
     const decoded = jwt.verify(token, secret);
     req.userData = decoded;
     next();
-  } catch (error) {
-    return res.status(401).json({
+  } catch (err) {
+    res.status(401).json({
       message: 'Auth failed',
-      error,
+      err,
     });
   }
 };

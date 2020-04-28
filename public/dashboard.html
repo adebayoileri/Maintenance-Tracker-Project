@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/sb-admin-2.min.css">
-    <link rel="stylesheet" href="./assets/css/sb-admin-2.css">
     <title>Dashboard | User Account</title>
 </head>
 <body>
@@ -40,11 +39,14 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="index.html">
-          <i class="fa fa-fw fa-tachometer-alt"></i>
+          <i class="fa fa-tachometer"></i>
           <span>Home</span></a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" id="logout"> <span>Logout</span></a>
+        <a class="nav-link" href="/create" id="create_request"> <i class="fa fa-plus"></i> <span>Create Request</span></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" id="logout"> <i class="fa fa-wrench"></i> <span>Logout</span></a>
       </li>
 
       <!-- Divider -->
@@ -90,24 +92,78 @@
                       <th>Actions</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
+                  <tbody id="requestList">
+                    <!-- <tr>
                       <td>Bad Tyres</td>
                       <td>The technician bought bad tyres</td>
                       <td>Replacement</td>
                       <td>Auto</td>
                       <td>2012/03/29</td>
                       <td>pending</td>
-                      <td> <a class="btn btn-success" role="button" href="">Edit</a> <a class="btn btn-danger" role="button" href="">Delete</a></td>
-                    </tr>
+                      <td> <a class="btn btn-success" role="button" href="">Edit</a> <a id="deleteBtn" class="btn btn-danger" role="button" href="">Delete</a></td>
+                    </tr> -->
                   </tbody>
                 </table>
+                <button id="getAllRequests" class="btn btn-primary">Get all Requests</button>
               </div>
             </div>
           </div>
 
         </div>
         <!-- /.container-fluid -->
+          <!-- Modal container -->
+  <div class="modal" id="modal">
+    <div class="ch-modal-section" id="add-request">
+      <div class="ch-col-12 ch-modal-heading">
+        <h4>New Request</h4>
+        <span id="btn-close-add-request">&times;</span>
+      </div>
+      <div class="ch-row">
+        <div class="ch-col-10">
+          <form id="form-create-request">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" class="ch-input" required>
+            <label for="type">Type</label>
+            <select name="type" id="type" class="ch-input">
+              <option value="">-- select --</option>
+              <option value="repair">Repair</option>
+              <option value="maintenance">Maintenance</option>
+            </select>
+            <label for="description">Description</label>
+            <textarea name="description" id="description" class="ch-input ch-input-desc" required></textarea>
+            <button class="ch-btn-round" type="submit">Submit Request</button>
+          </form>
+          <br>
+        </div>
+      </div>
+    </div>
+
+    <div class="ch-modal-section" id="update-request">
+      <div class="ch-col-12 ch-modal-heading">
+        <h4>Update Request</h4>
+        <span id="btn-close-update-request">&times;</span>
+      </div>
+      <div class="ch-row">
+        <div class="ch-col-10">
+          <form id="form-update-request">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="updateTitle" class="ch-input" required>
+            <label for="type">Type</label>
+            <select name="type" id="updateType" class="ch-input">
+              <option value="">-- select --</option>
+              <option value="repair">Repair</option>
+              <option value="maintenance">Maintenance</option>
+            </select>
+            <label for="description">Description</label>
+            <textarea name="description" id="updateDescription" class="ch-input ch-input-desc" required></textarea>
+            <button class="ch-btn-round" type="submit">Update Request</button>
+          </form>
+          <br>
+        </div>
+      </div>
+    </div>
+
+  </div>
         
   
       </div>

@@ -27,6 +27,30 @@ app.use(express.static('public'));
 app.use('/api/v1/auth', AuthRoutes);
 app.use('/api/v1/users/requests', UserRoutes);
 app.use('/api/v1/admin/requests', AdminRoutes);
+// Get User dashboard
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'dashboard.html'));
+});
+
+app.get('/create', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'create.html'));
+});
+
+// Get Admin dashboard
+app.get('/home', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'admin.html'));
+});
+
+/**
+ *Edit the request with specified id
+*
+* @params {Object} requestId
+*
+*/
+
+app.get('/request/edit/:requestId', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'edit.html'));
+});
 
 // Test good route
 // app.get('/', (req, res) => {
