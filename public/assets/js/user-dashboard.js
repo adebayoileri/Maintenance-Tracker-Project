@@ -5,7 +5,8 @@
 const token = localStorage.getItem('token');
 const userId = localStorage.getItem('userid');
 const logOut = document.getElementById('logout');
-const baseUrl = 'http://localhost:3010/api/v1/users/requests';
+// const baseUrl = 'http://localhost:3010/api/v1/users/requests';
+const baseUrl = 'https://trackman.herokuapp.com/api/v1/users/requests';
 if (!token) {
   window.location = '../LogIn.html';
 }
